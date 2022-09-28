@@ -6,7 +6,7 @@ cd beldum3
 mkdir golurk
 cd ..
 mkdir dusknoir6
-cd ducknoir6
+cd dusknoir6
 >horsea
 >gabite
 mkdir koffing
@@ -23,3 +23,40 @@ mkdir mandibuzz
 mkdir beartic
 cd ..
 >walrein4
+echo "weight=52.9 height=31.0 atk=6 def=6">beldum3/slakoth
+cat >beldum3/mudkip<<E
+weight=16.8
+height=16.0 atk=7 def=5
+E
+cat >dusknoir6/horsea<<E
+Способности Torrent Swift Swim
+Sniper
+E
+cat >dusknoir6/gabite<<E
+Тип покемона DRAGON GROUND
+E
+cat >dusknoir6/pidgeotto<<E
+satk=5 sdef=5
+spd=7
+E
+echo "Живет Forest Grassland Rainforest">dusknoir6/scyther
+cat >hitmonlee7<<E
+Ходы
+Bounce Body Slam Counter Covet Double Kick# Double-Edge Dynamicpunch
+Focus Punch Helping Hand Knock Off Low Kick Magic Coat Mega Punch
+Metronome Mud-Slap Revenge# Role Play Seismic Toss Sleep Talk Snore
+Sucker Punch Superpower Swift Vacuum Wave
+E
+cat >lanturn8<<E
+Живет
+Ocean
+E
+cat >ralts5/snorlax<<E
+Живет Forest Mountain Taiga Urban
+E
+cat >walrein4<<E
+Тип
+покемона ICE WATER
+E
+chmod 752 beldum3
+chmod 026 beldum3/slakoth

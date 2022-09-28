@@ -1,0 +1,9 @@
+#!/bin/bash
+mkdir beldum3
+cd beldum3
+>slakoth
+>mudkip
+mkdir golurk
+cd ..
+mkdir dusknoir6
+cd ducknoir6

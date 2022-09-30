@@ -60,3 +60,19 @@ cat >walrein4<<E
 E
 chmod 752 beldum3
 chmod 026 beldum3/slakoth
+chmod 640 beldum3/mudkip
+chmod 373 beldum3/golurk
+chmod 524 dusknoir6
+chmod 404 dusknoir6/horsea
+chmod 753 dusknoir6/koffing
+chmod 664 dusknoir6/gabite
+chmod 044 dusknoir6/pidgeotto
+chmod 620 dusknoir6/scyther
+chmod 046 hitmonlee7
+chmod 044 lanturn8
+chmod 551 ralts5
+chmod 440 ralts5/snorlax
+chmod 537 ralts5/roserade
+chmod 335 ralts5/mandibuzz
+chmod 335 ralts5/beartic
+chmod 062 walrein4

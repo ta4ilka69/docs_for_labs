@@ -76,3 +76,6 @@ chmod 537 ralts5/roserade
 chmod 335 ralts5/mandibuzz
 chmod 335 ralts5/beartic
 chmod 062 walrein4
+#end of task 1-2
+chmod u+r dusknoir6
+ln -s ../lanturn8 dusknoir6/horsealanturn

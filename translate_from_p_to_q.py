@@ -1,7 +1,6 @@
-global Alphabet
 Alphabet = '0123456789ABCDEFGHIGKLMNOPQRSTUVWXYZ'
 
-
+#Translate number from p to q number system
 def from_p_to_q(p, q, n):
     return from_10_to_q(q, from_p_to_10(p, n),)
 
@@ -37,7 +36,7 @@ def check(p, q, n):
 
 
 def Fib_CC(n):
-    if n==0:
+    if n == 0:
         return 0
     a = [1, 2]
     while a[-1] <= n:
@@ -63,17 +62,17 @@ if s == '1':
         print("Неверный формат ввода!")
     else:
         p, q, n = map(str, S)
+        n = n.upper()
         if check(p, q, n):
             p = int(float(p))
             q = int(float(q))
-            n = int(n)
             print(from_p_to_q(p, q, n))
         else:
             print('Проверьте возможность существования числа в заданных СС')
 else:
     s = input(
         'Введите число в десятичной системе счисления, чтобы перевести его в СС Цекендорфа:\n')
-    if s.isnumeric() and int(s)==float(s) and int(s)>=0:
+    if s.isnumeric() and int(s) == float(s) and int(s) >= 0:
         print(int(Fib_CC(int(s))))
     else:
         print("Неверный формат ввода!")

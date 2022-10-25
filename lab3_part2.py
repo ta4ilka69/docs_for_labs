@@ -4,6 +4,7 @@ regslash = r'.*\/.*\/.*'
 for i in range(6):
     fn = './tests_for_3lab/'+str(i)+'_1.txt'
     s = open(fn,'r',encoding='utf8').readline()
+    print(re.match(regslash,s))
     if not re.match(regslash,s):
         print('Не хайку. Должно быть 3 строки')
     else:  
@@ -11,6 +12,7 @@ for i in range(6):
             print('Хайку.')
         else:
             print('Не хайку.')
+            
 
     
     

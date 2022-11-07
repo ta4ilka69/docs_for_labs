@@ -1,0 +1,6 @@
+#!/bin/bash
+cd lab0
+chmod u+w dusknoir6
+ln -s ../lanturn8 dusknoir6/horsealanturn
+chmod u-w dusknoir6
+#recursively copy the contents of dusknoir6 to ralts5/roserade

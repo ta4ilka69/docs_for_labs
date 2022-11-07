@@ -1,4 +1,6 @@
 #!/bin/bash
+mkdir lab0
+cd lab0
 mkdir beldum3
 cd beldum3
 >slakoth
@@ -76,6 +78,30 @@ chmod 537 ralts5/roserade
 chmod 335 ralts5/mandibuzz
 chmod 335 ralts5/beartic
 chmod 062 walrein4
-#end of task 1-2
 chmod u+w dusknoir6
 ln -s ../lanturn8 dusknoir6/horsealanturn
+chmod u+w ralts5/roserade
+chmod u+r dusknoir6/pidgeotto
+cp -r dusknoir6/* ralts5/roserade
+chmod u-r dusknoir6/pidgeotto
+chmod u-w ralts5/roserade
+chmod u+r lanturn8
+ln lanturn8 dusknoir6/gabitelanturn
+chmod u-w dusknoir6
+chmod u-r lanturn8
+chmod u+r hitmonlee7
+chmod u+w dusknoir6/koffing
+cp hitmonlee7 dusknoir6/koffing
+chmod u-w dusknoir6/koffing
+chmod u-r hitmonlee7
+ln -s beldum3 Copy_9
+chmod u+r dusknoir6/scyther
+chmod u+r beldum3/slakoth
+cat dusknoir6/scyther beldum3/slakoth >walrein4_11
+chmod u-r beldum3/slakoth
+chmod u-r dusknoir6/scyther
+chmod u+r walrein4
+chmod u+w dusknoir6
+cat walrein4 >pidgeottowalrein
+chmod u-w dusknoir6
+chmod u-r walrein4

@@ -1,6 +1,6 @@
 import re
-sr = r':-{\\'
-sm = ':-{\\'
+sm = input('Enter the smile for search: ')
+sr = re.escape(sm)
 for i in range(5):
     fn = './tests_for_3lab/'+str(i)+'.txt'
     s = open(fn, 'r', encoding='utf8').readline()

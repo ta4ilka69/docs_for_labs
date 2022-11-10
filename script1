@@ -3,28 +3,24 @@ mkdir lab0
 cd lab0
 mkdir beldum3
 cd beldum3
->slakoth
->mudkip
+touch slakoth mudkip
 mkdir golurk
 cd ..
 mkdir dusknoir6
 cd dusknoir6
->horsea
->gabite
+touch horsea gabite
 mkdir koffing
->pidgeotto
->scyther
+touch pidgeotto scyther
 cd ..
->hitmonlee7
->lanturn8
+touch hitmonlee7 lanturn8
 mkdir ralts5
 cd ralts5
->snorlax
+touch snorlax
 mkdir roserade
 mkdir mandibuzz
 mkdir beartic
 cd ..
->walrein4
+touch walrein4
 echo "weight=52.9 height=31.0 atk=6 def=6">beldum3/slakoth
 cat >beldum3/mudkip<<E
 weight=16.8
@@ -105,3 +101,8 @@ chmod u+w dusknoir6
 cat walrein4 >pidgeottowalrein
 chmod u-w dusknoir6
 chmod u-r walrein4
+cd ..
+mkdir tmp
+>tmp/count
+cd lab0
+cat -n ./*e ./*/*e|wc -c >../tmp/count 2>$1

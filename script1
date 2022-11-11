@@ -117,4 +117,20 @@ echo
 cd ..
 cat walrein4 2>/dev/null|grep -e "*e"
 echo
-find . -samefile $(grep -R . -I -L -e "*ra*"|grep -e "^\.")
+
+echo
+cat beldum3/slakoth beldum3/mudkip dusknoir6/horsea dusknoir6/gabite dusknoir6/pidgeotto dusknoir6/scyther 2>../tmp/err2|grep -x -e ".*e"
+chmod u+r hitmonlee7
+cat hitmonlee7|grep -n -xve ".*e"
+chmod 777 lanturn8
+rm lanturn8
+chmod 777 dusknoir6
+chmod 777 dusknoir6/horsea
+rm dusknoir6/horsea
+rm -r $(find . -iname "Copy*" 2>/dev/null)
+rm -r $(find . -iname "gabitelantu*" -type f 2>/dev/null)
+chmod -R 777 beldum3
+rm -r beldum3
+chmod 777 ralts5
+chmod 777 ralts5/mandibuzz
+rm -r ralts5/mandibuzz

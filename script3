@@ -1,4 +1,5 @@
 #!/bin/bash
+cd lab0
 chmod u+w dusknoir6
 ln -s ../lanturn8 dusknoir6/horsealanturn
 chmod u+w ralts5/roserade

@@ -1,4 +1,5 @@
 #!/bin/bash
+cd lab0
 chmod 752 beldum3
 chmod 026 beldum3/slakoth
 chmod 640 beldum3/mudkip

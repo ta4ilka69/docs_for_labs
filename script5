@@ -1,4 +1,5 @@
 #!/bin/bash
+cd lab0
 chmod 777 lanturn8
 rm lanturn8
 chmod 777 dusknoir6

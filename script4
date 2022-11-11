@@ -1,5 +1,4 @@
 #!/bin/bash
-cd ..
 mkdir tmp
 >tmp/count
 cd lab0

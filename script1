@@ -1,8 +1,4 @@
 #!/bin/bash
-chmod -R 777 lab0
-rm -r lab0
-chmod -R 777 tmp
-rm -r tmp
 mkdir lab0
 cd lab0
 mkdir beldum3

@@ -1,4 +1,8 @@
 #!/bin/bash
+chmod -R 777 lab0
+rm -r lab0
+chmod -R 777 tmp
+rm -r tmp
 mkdir lab0
 cd lab0
 mkdir beldum3
@@ -105,4 +109,12 @@ cd ..
 mkdir tmp
 >tmp/count
 cd lab0
-cat -n ./*e ./*/*e|wc -c >../tmp/count 2>$1
+cat $(find . -iname "*e" -type f 2>/dev/stdout) 2>/dev/null|wc -m >../tmp/count
+echo
+cd ralts5
+ls -lR 2>../../tmp/err|grep -e "^[dlf-]"|sort -k2 -r
+echo
+cd ..
+cat walrein4 2>/dev/null|grep -e "*e"
+echo
+find . -samefile $(grep -R . -I -L -e "*ra*"|grep -e "^\.")

@@ -4,7 +4,9 @@ chmod u+w dusknoir6
 ln -s ../lanturn8 dusknoir6/horsealanturn
 chmod u+w ralts5/roserade
 chmod u+r dusknoir6/pidgeotto
+chmod u+r dusknoir6/horsealanturn
 cp -r dusknoir6/* ralts5/roserade
+chmod u-r dusknoir6/horsealanturn
 chmod u-r dusknoir6/pidgeotto
 chmod u-w ralts5/roserade
 chmod u+r lanturn8

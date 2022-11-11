@@ -1,1 +1,16 @@
 #!/bin/bash
+cd ..
+mkdir tmp
+>tmp/count
+cd lab0
+cat $(find . -iname "*e" -type f 2>/dev/stdout) 2>/dev/null|wc -m >../tmp/count
+echo
+cd ralts5
+ls -lR 2>../../tmp/err|grep -e "^[dlf-]"|sort -k2 -r
+echo
+cd ..
+cat walrein4 2>/dev/null|grep -e "*e"
+echo
+cat beldum3/slakoth beldum3/mudkip dusknoir6/horsea dusknoir6/gabite dusknoir6/pidgeotto dusknoir6/scyther 2>../tmp/err2|grep -x -e ".*e"
+chmod u+r hitmonlee7
+cat hitmonlee7|grep -n -xve ".*e"

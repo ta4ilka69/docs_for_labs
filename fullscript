@@ -1,0 +1,136 @@
+#!/bin/bash
+chmod -R 777 lab0
+rm -r lab0
+chmod -R 777 tmp
+rm -r tmp
+mkdir lab0
+cd lab0
+mkdir beldum3
+cd beldum3
+touch slakoth mudkip
+mkdir golurk
+cd ..
+mkdir dusknoir6
+cd dusknoir6
+touch horsea gabite
+mkdir koffing
+touch pidgeotto scyther
+cd ..
+touch hitmonlee7 lanturn8
+mkdir ralts5
+cd ralts5
+touch snorlax
+mkdir roserade
+mkdir mandibuzz
+mkdir beartic
+cd ..
+touch walrein4
+echo "weight=52.9 height=31.0 atk=6 def=6">beldum3/slakoth
+cat >beldum3/mudkip<<E
+weight=16.8
+height=16.0 atk=7 def=5
+E
+cat >dusknoir6/horsea<<E
+Способности Torrent Swift Swim
+Sniper
+E
+cat >dusknoir6/gabite<<E
+Тип покемона DRAGON GROUND
+E
+cat >dusknoir6/pidgeotto<<E
+satk=5 sdef=5
+spd=7
+E
+echo "Живет Forest Grassland Rainforest">dusknoir6/scyther
+cat >hitmonlee7<<E
+Ходы
+Bounce Body Slam Counter Covet Double Kick# Double-Edge Dynamicpunch
+Focus Punch Helping Hand Knock Off Low Kick Magic Coat Mega Punch
+Metronome Mud-Slap Revenge# Role Play Seismic Toss Sleep Talk Snore
+Sucker Punch Superpower Swift Vacuum Wave
+E
+cat >lanturn8<<E
+Живет
+Ocean
+E
+cat >ralts5/snorlax<<E
+Живет Forest Mountain Taiga Urban
+E
+cat >walrein4<<E
+Тип
+покемона ICE WATER
+E
+chmod 752 beldum3
+chmod 026 beldum3/slakoth
+chmod 640 beldum3/mudkip
+chmod 373 beldum3/golurk
+chmod 524 dusknoir6
+chmod 404 dusknoir6/horsea
+chmod 753 dusknoir6/koffing
+chmod 664 dusknoir6/gabite
+chmod 044 dusknoir6/pidgeotto
+chmod 620 dusknoir6/scyther
+chmod 046 hitmonlee7
+chmod 044 lanturn8
+chmod 551 ralts5
+chmod 440 ralts5/snorlax
+chmod 537 ralts5/roserade
+chmod 335 ralts5/mandibuzz
+chmod 335 ralts5/beartic
+chmod 062 walrein4
+chmod u+w dusknoir6
+ln -s ../lanturn8 dusknoir6/horsealanturn
+chmod u+w ralts5/roserade
+chmod u+r dusknoir6/pidgeotto
+cp -r dusknoir6/* ralts5/roserade
+chmod u-r dusknoir6/pidgeotto
+chmod u-w ralts5/roserade
+chmod u+r lanturn8
+ln lanturn8 dusknoir6/gabitelanturn
+chmod u-w dusknoir6
+chmod u-r lanturn8
+chmod u+r hitmonlee7
+chmod u+w dusknoir6/koffing
+cp hitmonlee7 dusknoir6/koffing
+chmod u-w dusknoir6/koffing
+chmod u-r hitmonlee7
+ln -s beldum3 Copy_9
+chmod u+r dusknoir6/scyther
+chmod u+r beldum3/slakoth
+cat dusknoir6/scyther beldum3/slakoth >walrein4_11
+chmod u-r beldum3/slakoth
+chmod u-r dusknoir6/scyther
+chmod u+r walrein4
+chmod u+w dusknoir6
+cat walrein4 >pidgeottowalrein
+chmod u-w dusknoir6
+chmod u-r walrein4
+cd ..
+mkdir tmp
+>tmp/count
+cd lab0
+cat $(find . -iname "*e" -type f 2>/dev/stdout) 2>/dev/null|wc -m >../tmp/count
+echo
+cd ralts5
+ls -lR 2>../../tmp/err|grep -e "^[dlf-]"|sort -k2 -r
+echo
+cd ..
+cat walrein4 2>/dev/null|grep -e "*e"
+echo
+
+echo
+cat beldum3/slakoth beldum3/mudkip dusknoir6/horsea dusknoir6/gabite dusknoir6/pidgeotto dusknoir6/scyther 2>../tmp/err2|grep -x -e ".*e"
+chmod u+r hitmonlee7
+cat hitmonlee7|grep -n -xve ".*e"
+chmod 777 lanturn8
+rm lanturn8
+chmod 777 dusknoir6
+chmod 777 dusknoir6/horsea
+rm dusknoir6/horsea
+rm -r $(find . -iname "Copy*" 2>/dev/null)
+rm -r $(find . -iname "gabitelantu*" -type f 2>/dev/null)
+chmod -R 777 beldum3
+rm -r beldum3
+chmod 777 ralts5
+chmod 777 ralts5/mandibuzz
+rm -r ralts5/mandibuzz

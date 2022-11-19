@@ -8,7 +8,13 @@ result = ''
 tab = -1
 i = 0
 name = True
+mas = False
+mastab = -2
 while i < len(s):
+    if s[i] == '[':
+        i += 1
+        mas = True
+        mastab = tab
     if s[i] == '{':
         tab += 1
         name = True
@@ -23,7 +29,10 @@ while i < len(s):
                 t += s[i]
                 i += 1
             i += 1
-            result += "  "*tab + t
+            if mas and tab == mastab:
+                result += "  "*tab + '- ' + t
+            else:
+                result += "  "*tab + t
             name = False
         else:
             t = ''
@@ -50,6 +59,9 @@ while i < len(s):
         i += 1
     elif s[i] == '}':
         tab -= 1
+        i += 1
+    elif s[i] == ']':
+        mas = False
         i += 1
     else:
         i += 1

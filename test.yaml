@@ -1,7 +1,11 @@
 П: 
   d: da
-  time: '25'
-  end
-
-    da: 
+  time: 
+  - '25'
+  - end
+  - da: 
       re: r
+      ra: r
+  - r
+  t: s
+t: f

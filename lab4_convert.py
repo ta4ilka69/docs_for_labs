@@ -11,16 +11,22 @@ name = True
 mas = False
 mastab = -2
 while i < len(s):
+    if mastab == tab:
+        name = False
     if s[i] == '[':
         i += 1
         mas = True
         mastab = tab
+        name = False
+        result += '\n'
     if s[i] == '{':
         tab += 1
-        name = True
+        if not(mas and tab - mastab<2):
+            name = True
         i += 1
         if tab != 0:
-            result += '\n'
+            if result[-1] != '\n':
+                result += '\n'
     elif s[i] == '\"':
         if name:
             t = ''
@@ -47,10 +53,21 @@ while i < len(s):
                     q = False
                     break
             if q:
-                result += "\'"+t+"\'"
+                if mas and mastab == tab:
+                    if result[-1] != '\n':
+                        result += '\n'
+                    result += mastab*'  '+'- '+"\'"+t+"\'"
+                else:
+                    result += "\'"+t+"\'"
+                    name = True
             else:
-                result += t
-            name = True
+                if mas and tab - mastab<2:
+                    if result[-1] != '\n':
+                        result += '\n'
+                    result += mastab*'  '+'- '+t
+                else:
+                    result += t
+                    name = True
     elif s[i] == ':':
         result += ': '
         i += 1
@@ -63,6 +80,8 @@ while i < len(s):
     elif s[i] == ']':
         mas = False
         i += 1
+        name = True
+        mastab = -3
     else:
         i += 1
 f = open("./Monday.yaml", 'w', encoding='utf-8')

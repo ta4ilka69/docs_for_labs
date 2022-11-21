@@ -3,7 +3,7 @@ from random import randint
 
 sm = input('Enter the smile: ')
 for i in range(5):
-    fn = './tests_for_3lab/'+str(i)+'.txt'
+    fn = './'+str(i)+'.txt'
     f = open(fn,'w',encoding='utf8')
     l = randint(20,30)
     s = ''

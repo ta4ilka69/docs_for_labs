@@ -9,19 +9,22 @@ tab = -1
 i = 0
 name = True
 mas = False
-mastab = -2
+mastab = [-3]
 while i < len(s):
-    if mastab == tab:
+    if mastab[-1] == tab:
         name = False
     if s[i] == '[':
         i += 1
         mas = True
-        mastab = tab
+        if mastab[-1]==-3:
+            mastab[-1] = tab
+        else:
+            mastab.append(tab)
         name = False
         result += '\n'
     if s[i] == '{':
         tab += 1
-        if not(mas and tab - mastab<2):
+        if not(mas and tab - mastab[-1]<2):
             name = True
         i += 1
         if tab != 0:
@@ -35,7 +38,7 @@ while i < len(s):
                 t += s[i]
                 i += 1
             i += 1
-            if mas and tab == mastab:
+            if mas and tab == mastab[-1]:
                 result += "  "*tab + '- ' + t
             else:
                 result += "  "*tab + t
@@ -53,18 +56,18 @@ while i < len(s):
                     q = False
                     break
             if q:
-                if mas and mastab == tab:
+                if mas and mastab[-1] == tab:
                     if result[-1] != '\n':
                         result += '\n'
-                    result += mastab*'  '+'- '+"\'"+t+"\'"
+                    result += mastab[-1]*'  '+'- '+"\'"+t+"\'"
                 else:
                     result += "\'"+t+"\'"
                     name = True
             else:
-                if mas and tab - mastab<2:
+                if mas and tab - mastab[-1]<2:
                     if result[-1] != '\n':
                         result += '\n'
-                    result += mastab*'  '+'- '+t
+                    result += mastab[-1]*'  '+'- '+t
                 else:
                     result += t
                     name = True
@@ -78,10 +81,14 @@ while i < len(s):
         tab -= 1
         i += 1
     elif s[i] == ']':
-        mas = False
+        if len(mastab)==1:
+            mas = False
         i += 1
         name = True
-        mastab = -3
+        if len(mastab)==1:
+            mastab[-1]=-3
+        else:
+            del(mastab[-1])
     else:
         i += 1
 f = open("./Monday.yaml", 'w', encoding='utf-8')

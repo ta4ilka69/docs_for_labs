@@ -1,6 +1,6 @@
 import json, csv
 js = json.loads(open('./Monday_cs.json',encoding='utf8').read())
-wr = csv.writer(open('./Monday_cs.csv','w',encoding='utf8'),delimiter=',',skipinitialspace=False)
+wr = csv.writer(open('./Monday_cs.csv','w',encoding='utf8'),delimiter=',',skipinitialspace=False,lineterminator='\n')
 headers = []
 for x in js:
     headers.append(x)

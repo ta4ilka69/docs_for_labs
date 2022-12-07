@@ -1,4 +1,4 @@
-f = open('./Monday.json', 'r', encoding='utf-8')
+f = open('./test.json', 'r', encoding='utf-8')
 F = f.readlines()
 f.close()
 s = ''
@@ -89,8 +89,30 @@ while i < len(s):
             mastab[-1]=-3
         else:
             del(mastab[-1])
+    elif s[i].isdigit():
+        t = ''
+        while s[i].isdigit():
+            t += s[i]
+            i += 1
+        if mas and mastab[-1] == tab:
+            if result[-1] != '\n':
+                result += '\n'
+            result += mastab[-1]*'  '+'- '+t
+        else:
+            result += t
+    elif s[i].isalpha():
+        t = ''
+        while s[i].isalpha():
+            t += s[i]
+            i += 1
+        if mas and mastab[-1] == tab:
+            if result[-1] != '\n':
+                result += '\n'
+            result += mastab[-1]*'  '+'- '+t
+        else:
+            result += t
     else:
         i += 1
-f = open("./Monday.yaml", 'w', encoding='utf-8')
+f = open("./test.yaml", 'w', encoding='utf-8')
 f.write(result)
 f.close()

@@ -1,12 +1,12 @@
-П:
+П: 
   d: da
-  time:
+  time: 
   - '25'
   - end
-  - da:
-      re: r
+  - da: 
+      re: \r
       ra: r
-      MAS:
+      MAS: 
       - re
       - q
       - s

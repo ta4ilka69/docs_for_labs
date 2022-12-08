@@ -1,4 +1,4 @@
-f = open('./test.json', 'r', encoding='utf-8')
+f = open('./Monday.json', 'r', encoding='utf-8')
 F = f.readlines()
 f.close()
 s = ''
@@ -113,6 +113,6 @@ while i < len(s):
             result += t
     else:
         i += 1
-f = open("./test.yaml", 'w', encoding='utf-8')
+f = open("./Monday.yaml", 'w', encoding='utf-8')
 f.write(result)
 f.close()

@@ -1,0 +1,24 @@
+\documentclass[a4paper,14pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cmap}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\fancypagestyle{title}{
+    \fancyfoot[C]{Санкт-Петербург, $2022$}
+    \renewcommand{\headrulewidth}{0 mm}
+}
+\usepackage{multicol}
+\begin{document}
+\newgeometry{left=2 cm,right=2 cm,top=2.5 cm,bottom=2.5 cm}
+    \thispagestyle{title}
+    \input{title.tex}
+    \clearpage
+    \newpage
+
+    \input{page1.tex}
+    \clearpage
+\end{document}

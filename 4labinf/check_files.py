@@ -1,3 +1,1 @@
-f = open('./Monday_reg.yaml', encoding='utf8').read()
-g = open('./Monday_lib.yaml', encoding='utf8').read()
-print(f,g)
+print(hex(2**16-(37564|int('0x2f99',16))-1))

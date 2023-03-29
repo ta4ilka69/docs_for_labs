@@ -1,0 +1,48 @@
+CREATE TABLE spaceship (
+    ship_id SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+    x_coordinate BIGINT,
+    y_coordinate BIGINT,
+    z_coordinate BIGINT
+);
+
+CREATE TABLE radar (
+    radar_id SERIAL PRIMARY KEY,
+    ship_id INTEGER REFERENCES spaceship(ship_id),
+    signal_frequency DECIMAL,
+    send_frequency DECIMAL
+);
+
+CREATE TABLE energy_pulse (
+    pulse_id SERIAL PRIMARY KEY,
+    radar_id INTEGER REFERENCES radar(radar_id),
+    send_time DECIMAL
+);
+
+CREATE TABLE jupiter_moons(
+    moon_id SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+    x_coordinate BIGINT,
+    y_coordinate BIGINT,
+    z_coordinate BIGINT,
+    diameter INTEGER
+);
+CREATE TABLE moon_zone (
+    zone_id SERIAL PRIMARY KEY,
+    moon_id INTEGER REFERENCES jupiter_moons(moon_id),
+    x_coordinate BIGINT,
+    y_coordinate BIGINT,
+    z_coordinate BIGINT,
+    radius INTEGER
+);
+CREATE TABLE destinations (
+    d_id SERIAL PRIMARY KEY,
+    ship_id INTEGER REFERENCES spaceship(ship_id),
+    zone_id INTEGER REFERENCES moon_zone(zone_id)
+);
+CREATE TABLE answer_pulse(
+    answer_id SERIAL PRIMARY KEY,
+    pulse_id INTEGER REFERENCES energy_pulse(pulse_id),
+    zone_id INTEGER REFERENCES moon_zone(zone_id),
+    returned BOOLEAN
+);

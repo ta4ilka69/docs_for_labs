@@ -1,6 +1,6 @@
 CREATE TABLE spaceship (
     ship_id SERIAL PRIMARY KEY,
-    name VARCHAR(50),
+    name VARCHAR(50) NOT NULL,
     x_coordinate BIGINT,
     y_coordinate BIGINT,
     z_coordinate BIGINT
@@ -8,41 +8,153 @@ CREATE TABLE spaceship (
 
 CREATE TABLE radar (
     radar_id SERIAL PRIMARY KEY,
-    ship_id INTEGER REFERENCES spaceship(ship_id),
+    ship_id INTEGER REFERENCES spaceship(ship_id) ON DELETE RESTRICT,
     signal_frequency DECIMAL,
     send_frequency DECIMAL
 );
 
 CREATE TABLE energy_pulse (
     pulse_id SERIAL PRIMARY KEY,
-    radar_id INTEGER REFERENCES radar(radar_id),
+    radar_id INTEGER DEFAULT -1 REFERENCES radar(radar_id)  ON DELETE SET DEFAULT,
     send_time DECIMAL
 );
 
-CREATE TABLE jupiter_moons(
-    moon_id SERIAL PRIMARY KEY,
-    name VARCHAR(50),
+CREATE TABLE cosmic_type(type_id SERIAL PRIMARY KEY, name VARCHAR(50));
+
+CREATE TABLE cosmic_body(
+    obj_id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    type_id INTEGER REFERENCES cosmic_type(type_id) ON UPDATE RESTRICT,
     x_coordinate BIGINT,
     y_coordinate BIGINT,
     z_coordinate BIGINT,
     diameter INTEGER
 );
+
 CREATE TABLE moon_zone (
     zone_id SERIAL PRIMARY KEY,
-    moon_id INTEGER REFERENCES jupiter_moons(moon_id),
+    moon_id INTEGER REFERENCES cosmic_body(obj_id) ON DELETE SET NULL,
     x_coordinate BIGINT,
     y_coordinate BIGINT,
     z_coordinate BIGINT,
     radius INTEGER
 );
-CREATE TABLE destinations (
+
+CREATE TABLE destination (
     d_id SERIAL PRIMARY KEY,
-    ship_id INTEGER REFERENCES spaceship(ship_id),
-    zone_id INTEGER REFERENCES moon_zone(zone_id)
+    ship_id INTEGER REFERENCES spaceship(ship_id) ON UPDATE RESTRICT ON DELETE SET NULL,
+    zone_id INTEGER REFERENCES moon_zone(zone_id) ON DELETE SET NULL
 );
+
 CREATE TABLE answer_pulse(
     answer_id SERIAL PRIMARY KEY,
-    pulse_id INTEGER REFERENCES energy_pulse(pulse_id),
-    zone_id INTEGER REFERENCES moon_zone(zone_id),
+    pulse_id INTEGER REFERENCES energy_pulse(pulse_id) ON DELETE NO ACTION,
+    zone_id INTEGER REFERENCES moon_zone(zone_id) ON DELETE SET NULL,
     returned BOOLEAN
 );
+
+INSERT INTO
+    spaceship (name, x_coordinate, y_coordinate, z_coordinate)
+VALUES
+    ('Discovery One', 1000000, 2000000, 3000000);
+
+INSERT INTO
+    spaceship (name, x_coordinate, y_coordinate, z_coordinate)
+VALUES
+    ('Event Horizon', 500000, 1500000, 2500000);
+
+INSERT INTO
+    radar (ship_id, signal_frequency, send_frequency)
+VALUES
+    (1, 5000.00, 100.00);
+
+INSERT INTO
+    radar (ship_id, signal_frequency, send_frequency)
+VALUES
+    (2, 10000.00, 200.00);
+
+INSERT INTO
+    energy_pulse (radar_id, send_time)
+VALUES
+    (1, 0.50);
+
+INSERT INTO
+    energy_pulse (radar_id, send_time)
+VALUES
+    (2, 1.20);
+
+INSERT INTO
+    cosmic_type (name)
+VALUES
+    ('Moon of Jupiter');
+
+INSERT INTO
+    cosmic_type (name)
+VALUES
+    ('Asteroid');
+
+INSERT INTO
+    cosmic_body (
+        name,
+        type_id,
+        x_coordinate,
+        y_coordinate,
+        z_coordinate,
+        diameter
+    )
+VALUES
+    ('Io', 1, 20000000, 30000000, 40000000, 4000);
+
+INSERT INTO
+    cosmic_body (
+        name,
+        type_id,
+        x_coordinate,
+        y_coordinate,
+        z_coordinate,
+        diameter
+    )
+VALUES
+    ('Europa', 1, 25000000, 32000000, 41000000, 6000);
+
+INSERT INTO
+    moon_zone (
+        moon_id,
+        x_coordinate,
+        y_coordinate,
+        z_coordinate,
+        radius
+    )
+VALUES
+    (1, 21000000, 31000000, 42000000, 20000);
+
+INSERT INTO
+    moon_zone (
+        moon_id,
+        x_coordinate,
+        y_coordinate,
+        z_coordinate,
+        radius
+    )
+VALUES
+    (2, 26000000, 33000000, 43000000, 30000);
+
+INSERT INTO
+    destination (ship_id, zone_id)
+VALUES
+    (1, 1);
+
+INSERT INTO
+    destination (ship_id, zone_id)
+VALUES
+    (2, 2);
+
+INSERT INTO
+    answer_pulse (pulse_id, zone_id, returned)
+VALUES
+    (1, 1, false);
+
+INSERT INTO
+    answer_pulse (pulse_id, zone_id, returned)
+VALUES
+    (2, 2, true);

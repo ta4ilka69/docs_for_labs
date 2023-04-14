@@ -1,7 +1,7 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import requests
-def submit_response(form_url,entry,verbose=False):
+def submit_response(form_url,entry):
     res = urllib.request.urlopen(form_url)
     soup = BeautifulSoup(res.read(), 'html.parser')
     html = soup.decode("utf-8")
@@ -9,7 +9,7 @@ def submit_response(form_url,entry,verbose=False):
         submit_url = form_url.replace('/viewform', '/formResponse')
         form_data = {'draftResponse':[],
                     'pageHistory':0}
-        form_data[entry] = "awd"
+        form_data[entry] = "Балин Артем"
         user_agent = {'Referer':form_url,
                     'User-Agent': "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36"}
         global t

@@ -1,27 +1,29 @@
+drop table humanbeing;
+drop type WeaponType;
+drop type Mood;
+
 create type WeaponType as ENUM(
-    'HAMMER',
-    'AXE',
-    'PISTOL',
+    'RIFLE',
+    'KNIFE',
     'SHOTGUN',
-    'BAT'
+    'MACHINE_GUN'
 );
 
-create type Mood as ENUM('SADNESS', 'RAGE', 'FRENZY');
+create type Mood as ENUM('LONGING', 'GLOOM', 'FRENZY');
 
 create table humanbeing(
     id bigserial,
     name text,
-    x numeric,
+    x integer,
     y bigint,
-    created_at TIME DEFAULT CURRENT_TIME,
-    created_on DATE DEFAULT CURRENT_DATE,
+    creationDate timestamp with time zone default CURRENT_TIMESTAMP,
     realHero boolean,
     hasToothpick boolean,
-    impactSpeed numeric,
+    impactSpeed bigint,
     soundtrackName text,
     weaponType WeaponType,
     mood Mood,
-    carName text check (
+    carCool boolean check (
         name is not null
         and name != ''
         and x > -257
@@ -42,18 +44,19 @@ insert into
         soundtrackName,
         weaponType,
         mood,
-        carName
+        carCool
     )
 values
     (
         'Gosling',
-        23213.1231,
+        23213,
         123871248,
         true,
         false,
-        219874.213,
+        219874,
         'phonk',
-        'AXE',
-        'RAGE',
-        'Mustang'
+        'RIFLE',
+        'GLOOM',
+        true
     );
+select*from humanbeing;

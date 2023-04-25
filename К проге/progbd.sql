@@ -12,7 +12,7 @@ create type WeaponType as ENUM(
 create type Mood as ENUM('Longing', 'Gloom', 'Frenzy');
 
 create table humanbeing(
-    id bigserial,
+    id bigserial primary key,
     name text,
     x integer,
     y bigint,
@@ -24,7 +24,8 @@ create table humanbeing(
     weaponType WeaponType,
     mood Mood,
     carCool boolean check (
-        name is not null
+		id>0 and id is not null
+        and name is not null
         and name != ''
         and x > -257
         and realHero is not null
@@ -78,6 +79,34 @@ insert into
 values
     (
 		12,
+        'Hz',
+        2323,
+        123848,
+        false,
+        true,
+        4,
+        'kizaru',
+        'Shotgun',
+        'Frenzy',
+        true
+    );
+insert into
+    humanbeing (
+		id,
+        name,
+        x,
+        y,
+        realHero,
+        hasToothpick,
+        impactSpeed,
+        soundtrackName,
+        weaponType,
+        mood,
+        carCool
+    )
+values
+    (
+		8,
         'Hz',
         2323,
         123848,

@@ -34,6 +34,12 @@ create table humanbeing(
     )
 );
 
+create table users(
+    id bigserial primary key,
+    login text,
+    pass text
+);
+
 insert into
     humanbeing (
 		id,

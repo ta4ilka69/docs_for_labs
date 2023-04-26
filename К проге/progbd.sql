@@ -1,4 +1,5 @@
 drop table humanbeing;
+drop table users;
 drop type WeaponType;
 drop type Mood;
 
@@ -11,6 +12,12 @@ create type WeaponType as ENUM(
 
 create type Mood as ENUM('Longing', 'Gloom', 'Frenzy');
 
+create table users(
+    id bigserial primary key,
+    login text unique,
+    pass text,
+    salt text
+);
 create table humanbeing(
     id bigserial primary key,
     name text,
@@ -23,7 +30,9 @@ create table humanbeing(
     soundtrackName text,
     weaponType WeaponType,
     mood Mood,
-    carCool boolean check (
+    carCool boolean,
+    login text references users(login)
+    check (
 		id>0 and id is not null
         and name is not null
         and name != ''
@@ -33,95 +42,5 @@ create table humanbeing(
         and weaponType is not null
     )
 );
-
-create table users(
-    id bigserial primary key,
-    login text,
-    pass text
-);
-
-insert into
-    humanbeing (
-		id,
-        name,
-        x,
-        y,
-        realHero,
-        hasToothpick,
-        impactSpeed,
-        soundtrackName,
-        weaponType,
-        mood,
-        carCool
-    )
-values
-    (
-		default,
-        'Gosling',
-        2323,
-        123871248,
-        true,
-        false,
-        219874,
-        'phonk',
-        'Rifle',
-        'Gloom',
-        true
-    );
-insert into
-    humanbeing (
-		id,
-        name,
-        x,
-        y,
-        realHero,
-        hasToothpick,
-        impactSpeed,
-        soundtrackName,
-        weaponType,
-        mood,
-        carCool
-    )
-values
-    (
-		12,
-        'Hz',
-        2323,
-        123848,
-        false,
-        true,
-        4,
-        'kizaru',
-        'Shotgun',
-        'Frenzy',
-        true
-    );
-insert into
-    humanbeing (
-		id,
-        name,
-        x,
-        y,
-        realHero,
-        hasToothpick,
-        impactSpeed,
-        soundtrackName,
-        weaponType,
-        mood,
-        carCool
-    )
-values
-    (
-		8,
-        'Hz',
-        2323,
-        123848,
-        false,
-        true,
-        4,
-        'kizaru',
-        'Shotgun',
-        'Frenzy',
-        true
-    );
-select*from humanbeing;
+insert into users values (0,'GAF&f73Af#^fa','','');
+select*from users;

@@ -1,7 +1,6 @@
 drop table humanbeing;
 drop table users;
 
-
 create table users(
     id bigserial primary key,
     login text unique,

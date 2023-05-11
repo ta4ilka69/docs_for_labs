@@ -1,16 +1,6 @@
 drop table humanbeing;
 drop table users;
-drop type WeaponType;
-drop type Mood;
 
-create type WeaponType as ENUM(
-    'Rifle',
-    'Knife',
-    'Shotgun',
-    'Machine gun'
-);
-
-create type Mood as ENUM('Longing', 'Gloom', 'Frenzy');
 
 create table users(
     id bigserial primary key,
@@ -18,6 +8,7 @@ create table users(
     pass text,
     salt text
 );
+
 create table humanbeing(
     id bigserial primary key,
     name text,
@@ -28,8 +19,8 @@ create table humanbeing(
     hasToothpick boolean,
     impactSpeed bigint,
     soundtrackName text,
-    weaponType WeaponType,
-    mood Mood,
+    weaponType text,
+    mood text,
     carCool boolean,
     login text references users(login)
     check (
@@ -42,5 +33,3 @@ create table humanbeing(
         and weaponType is not null
     )
 );
-insert into users values (0,'GAF&f73Af#^fa','','');
-select*from users;

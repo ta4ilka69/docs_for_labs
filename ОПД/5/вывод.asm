@@ -2,7 +2,7 @@ org 0x0000
 OUTP:
     IN 0x15
     AND #0x40
-    BEQ ERR
+    BEQ OUTP
     LD #0
     OUT 0x14
     LD #0x1B

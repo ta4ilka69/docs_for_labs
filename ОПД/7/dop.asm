@@ -9,10 +9,10 @@ mw 0010E09001
 mw 80C4101040
 
 org 0x10
-first_num: word 0xC000
+first_num: word 0xfeb0
 res: word ?
 start: cla
-    ld #2
+    ld #-12
     word 0x9010
     st $res
     hlt

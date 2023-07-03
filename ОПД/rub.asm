@@ -43,3 +43,27 @@ JUMP $adding_loop
 ending: CLA
 ST $count
 HLT
+
+making_MODULE_x: ;0-ret, 1-num
+    mask_last_bit: word 0x1000 ;13-й бит
+    mask_others: word 0x0FFF; все биты, младше 13 (т.е. без знакового бита)
+    ld &1
+    and $mask_last_bit
+    beq plus
+    minus:
+    ld &1
+    neg
+    and $mask_others
+    st &1
+    plus:
+    ld &1
+    RET
+
+check_if_lower: ;0-ret, 1 - модуль числа (для вычитания)
+    ld $res_lower
+    cmp &1
+    BPL RETURN
+    ld $res_upper
+    dec
+    st $res_upper
+    RETURN: ret

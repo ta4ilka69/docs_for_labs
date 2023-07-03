@@ -1,4 +1,4 @@
-select
+explain analyze select
     НАИМЕНОВАНИЕ,
     ЧЛВК_ИД
 from

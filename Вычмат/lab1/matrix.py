@@ -1,64 +1,86 @@
 class Matrix:
-    def __init__(self, rows, cols):
+    def __init__(self, rows):
         self.rows = rows
-        self.cols = cols
-        self.data = [[0] * cols for _ in range(rows)]
+        self.n = len(rows)
+        self.m = len(rows[0])
+        if any(len(row) != self.m for row in rows):
+            raise ValueError("All rows must have the same length")
+        if self.n != self.m - 1:
+            raise ValueError("Matrix must be (n x n+1)")
+        if any(not isinstance(x, (int, float)) for x in sum(rows, [])):
+            raise ValueError("All elements must be numbers")
+        self.triangular_rows = None
+        self.permutations = -1
 
-    def __str__(self):
-        return '\n'.join([' '.join(map(str, row)) for row in self.data])
-
-    def set_value(self, row, col, value):
-        self.data[row][col] = value
-
-    def get_value(self, row, col):
-        return self.data[row][col]
-
-    def swap_rows(self, row1, row2):
-        self.data[row1], self.data[row2] = self.data[row2], self.data[row1]
-
-    def scale_row(self, row, scale):
-        self.data[row] = [value * scale for value in self.data[row]]
-
-    def add_scaled_row(self, row1, row2, scale):
-        self.data[row2] = [a + scale * b for a, b in zip(self.data[row2], self.data[row1])]
-
-    def gauss_elimination(self):
-        for pivot_row in range(min(self.rows, self.cols)):
-            # Make the diagonal element 1
-            pivot_element = self.get_value(pivot_row, pivot_row)
-            if pivot_element == 0:
-                # If the pivot element is zero, find a non-zero row to swap
-                for i in range(pivot_row + 1, self.rows):
-                    if self.get_value(i, pivot_row) != 0:
-                        self.swap_rows(pivot_row, i)
-                        pivot_element = self.get_value(pivot_row, pivot_row)
+    def triangular_matrix(self):
+        perm = 0
+        result = [row[:] for row in self.rows]
+        for i in range(self.n):
+            if result[i][i] == 0:
+                for j in range(i + 1, self.n):
+                    if result[j][i] != 0:
+                        result[i], result[j] = result[j], result[i]
+                        perm+=1
                         break
+                else:
+                    return -1
+            for j in range(i + 1, self.n):
+                factor = result[j][i] / result[i][i]
+                for k in range(self.n + 1):
+                    result[j][k] -= factor * result[i][k]
+        self.triangular_rows = result
+        self.permutations = perm
+        return perm
 
-            self.scale_row(pivot_row, 1 / pivot_element)
+    def determinant(self):
+        if self.permutations >=0:
+            result = 1
+            for i in range(self.n):
+                result *= self.triangular_rows[i][i]
+            return result * (-1)**self.permutations
+        else:
+            return 0
+    
+    def solve_system_gauss(self):
+        if self.determinant() == 0:
+            raise ValueError()
+        solutions = [0] * self.n
+        for i in range(self.n - 1, -1, -1):
+            solution = self.triangular_rows[i][self.n]
+            for j in range(i + 1, self.n):
+                solution -= self.triangular_rows[i][j] * solutions[j]
+            solutions[i] = solution / self.triangular_rows[i][i]
+        return solutions
+    def __str__(self):
+        col_widths = [max(len(str(elem)) for elem in col) for col in zip(*self.rows)]
+        matrix_str = "\nMatrix:\n\n"
+        for row in self.rows:
+            for i, elem in enumerate(row):
+                matrix_str += str(elem).ljust(col_widths[i]) + " | "
+            matrix_str = matrix_str[:-3]
+            matrix_str += "\n" + "-" * (sum(col_widths) + 3 * (len(row) - 1)) + "\n"
+        return matrix_str[:-1]
+    
+    
+    @staticmethod
+    def residual_vector(data, solution):
+        if len(data) != len(solution):
+            raise ValueError("Data and solution lengths do not match")
+        residual = []
+        for i in range(len(data)):
+            eq_residual = data[i][-1]
+            for j in range(len(solution)):
+                eq_residual -= data[i][j] * solution[j]
+            residual.append(eq_residual)
+        return residual
+    
 
-            # Eliminate below the pivot
-            for i in range(pivot_row + 1, self.rows):
-                factor = -self.get_value(i, pivot_row)
-                self.add_scaled_row(pivot_row, i, factor)
-
-
-# Example usage:
-matrix = Matrix(3, 4)
-matrix.set_value(0, 0, 2)
-matrix.set_value(0, 1, -1)
-matrix.set_value(0, 2, 1)
-matrix.set_value(0, 3, 8)
-matrix.set_value(1, 0, -3)
-matrix.set_value(1, 1, 1)
-matrix.set_value(1, 2, 2)
-matrix.set_value(1, 3, -11)
-matrix.set_value(2, 0, -2)
-matrix.set_value(2, 1, 1)
-matrix.set_value(2, 2, 2)
-matrix.set_value(2, 3, -3)
-
-print("Original Matrix:")
-print(matrix)
-print("\nMatrix after Gauss Elimination:")
-matrix.gauss_elimination()
-print(matrix)
+    def print_triangular(self):
+        col_widths = [max(len(str(elem)) for elem in col) for col in zip(*self.triangular_rows)]
+        matrix_str = "\nMatrix triangular:\n\n"
+        for row in self.triangular_rows:
+            for i, elem in enumerate(row):
+                matrix_str += str(elem).ljust(col_widths[i]) + " | "
+            matrix_str = matrix_str[:-3]
+            matrix_str += "\n" + "-" * (sum(col_widths) + 3 * (len(row) - 1)) + "\n"
+        return matrix_str[:-1]

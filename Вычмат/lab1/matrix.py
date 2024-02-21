@@ -51,6 +51,8 @@ class Matrix:
                 solution -= self.triangular_rows[i][j] * solutions[j]
             solutions[i] = solution / self.triangular_rows[i][i]
         return solutions
+    
+    
     def __str__(self):
         col_widths = [max(len(str(elem)) for elem in col) for col in zip(*self.rows)]
         matrix_str = "\nMatrix:\n\n"

@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { LaTeX, Mafs } from "mafs";
 
-export default function RadioButtonsGroup({ value, setValue }) {
+export default function RadioButtonsSystem({ value, setValue }) {
   return (
     <FormControl>
       <FormLabel
@@ -27,35 +27,24 @@ export default function RadioButtonsGroup({ value, setValue }) {
         <div className="flex radiolinear center_self">
           <FormControlLabel value="1" control={<Radio />} label="" />{" "}
           {
-            <Mafs width={300} height={50} pan={false}>
-              <LaTeX at={[0, 0]} tex={String.raw`x^2-3x+1`} />
+            <Mafs width={300} height={110} pan={false}>
+              <LaTeX at={[0, 0]} tex={String.raw`\begin{cases} x+\tan{y}=1 \\ \cot{x}+2y=-3 \end{cases}`} />
             </Mafs>
           }
         </div>
         <div className="flex radiolinear center_self">
           <FormControlLabel value="2" control={<Radio />} label="" />{" "}
           {
-            <Mafs width={300} height={50} pan={false}>
-              <LaTeX at={[0, 0]} tex={String.raw`e^x-\sin{x}+x`} />
+            <Mafs width={300} height={110} pan={false}>
+              <LaTeX at={[0, 0]} tex={String.raw`\begin{cases} y+e^x=5 \\ \ln{y}-x=3 \end{cases}`} />
             </Mafs>
           }
         </div>
         <div className="flex radiolinear center_self">
           <FormControlLabel value="3" control={<Radio />} label="" />{" "}
           {
-            <Mafs width={300} height={50} pan={false}>
-              <LaTeX at={[0, 0]} tex={String.raw`\frac{1}{\sin{x}}+x^2`} />
-            </Mafs>
-          }
-        </div>
-        <div className="flex radiolinear center_self">
-          <FormControlLabel value="4" control={<Radio />} label="" />{" "}
-          {
-            <Mafs width={300} height={50} pan={false}>
-              <LaTeX
-                at={[0, 0]}
-                tex={String.raw`e^{x}-x^2+10\cos{x}`}
-              />
+            <Mafs width={300} height={110} pan={false}>
+              <LaTeX at={[0, 0]} tex={String.raw`\begin{cases} \sin{2y}-5x=1 \\ \cos{4x}-2y=4 \end{cases}`} />
             </Mafs>
           }
         </div>

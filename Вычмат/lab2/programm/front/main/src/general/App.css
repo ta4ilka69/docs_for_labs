@@ -16,3 +16,12 @@
 .fullwidth{
     width: 100%;
 }
+.inputColumn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 1vh;
+  }

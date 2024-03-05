@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;200;300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;200;300;600&display=swap");
+@import "mafs/core.css";
+@import "mafs/font.css";
+@import "katex/dist/katex.min.css";
+.barbie-mode {
+  background: linear-gradient(#63ecef, #ff22c4);
+}
+.oppenheimer-mode {
+  background-image: url("/Oppenheimer-first-person-script-01-Mainstyle.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  color: aliceblue;
+  background-size: cover;
+}
+.flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
+body {
+  min-height: 100vh;
+  font-family: "Playpen Sans", sans-serif !important;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 9vh;
+}
+.zero {
+  margin: 0;
+  padding: 0;
+}
+.fontik{
+  font-family: "Playpen Sans", sans-serif !important;
+}
+.svg{
+  background-color: aliceblue;
+  width: 300px;
+  height: 300px;
+  border-radius: 30%;
+}
+.headers {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 7vh;
+  width: 100vw;
+  padding: 1vh;
+  position: fixed;
+}
+.footer {
+  background-color: #000000 !important;
+  color: aliceblue !important;
+  bottom: 0 !important;
+  box-sizing: border-box;
+}
+.github,
+.telegram {
+  height: 4.7vh;
+  width: 4.7vh;
+  background-color: #f0f8ff;
+  background-position: center;
+  border-radius: 0.5vh;
+}
+header{
+  margin-bottom: 3vh;
+}
+.center_self{
+  align-self: center;
+}
+.center_items{
+  align-items: center;
+}

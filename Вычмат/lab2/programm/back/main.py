@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import lab2.LinearEquation as le
+import lab2.System as Sy
 app = Flask(__name__)
 CORS(app, resources={r"/lab2/eq": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/lab2/s": {"origins": "http://localhost:5173"}})
 
 
 @app.route('/lab2/eq',methods=['POST'])
@@ -37,5 +39,19 @@ def solve_equation():
     except(ZeroDivisionError) as e:
         return jsonify(error="The derivative is zero, use another method"), 400
 
+@app.route('/lab2/s',methods=['POST'])
+def solve_system():
+    try:
+        data = request.get_json()
+        a0 = data.get("a0",0)
+        b0 =data.get("b0",0)
+        a1 =data.get("a",0)
+        b1 =data.get("b",0)
+        e =data.get("e",0)
+        eq = data.get('eq', "")
+        s = Sy.System()
+        return jsonify(s.Newton(a0,b0,a1,b1,e,eq))
+    except(ValueError) as e:
+        return jsonify(error=str(e)), 400
 if __name__ == '__main__':
     app.run()

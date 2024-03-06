@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Alerts } from "./subs/Alert";
 import ButtonSubmit from "./subs/ButtonSubmit";
-import InputLinear from "./subs/InputLinear";
 import RadioButtonsSystem from "./subs/NLSystem";
 import RadioMethodS from "./subs/RadioMethodS";
 import GraphS from "./subs/GraphS";
+import InputSystem from "./subs/InputSystem";
 
 
 const LSystem = () => {
@@ -12,22 +12,25 @@ const LSystem = () => {
   const [a, setA] = useState(null);
   const [b, setB] = useState(null);
   const [ee, setE] = useState(null);
-  const [resultx, setResultx] = useState(null);
-  const [resultf, setResultf] = useState(null);
-  const [resultk, setResultk] = useState(null);
-  const [m, setM] = useState("1");
+  const [a0, setA0] = useState(null);
+  const [b0, setB0] = useState(null)
   const [err, setErr] = useState("");
+  const [resultX, setResultX] = useState(null);
+  const [resultK, setResultK] = useState(null);
+  const [resultY, setResultY] = useState(null);
   const handleClick = async (e) => {
     e.preventDefault();
-    if (a === null || b === null || ee === null) {
+    if (a === null || b === null || ee === null||a0===null||b0===null) {
       setErr("Please fill all the fields");
       return;
     }
     let a1 = a.toString().replace(",", ".");
     let b1 = b.toString().replace(",", ".");
     let e1 = ee.toString().replace(",", ".");
+    let a2 = a0.toString().replace(",", ".");
+    let b2 = b0.toString().replace(",", ".");
     console.log(a1, b1, e1);
-    if (isNaN(a1) || isNaN(b1) || isNaN(e1)) {
+    if (isNaN(a1) || isNaN(b1) || isNaN(e1) || isNaN(a2) || isNaN(b2)){
       setErr("Please enter a valid number");
       return;
     }
@@ -37,10 +40,11 @@ const LSystem = () => {
       b: parseFloat(b1),
       e: parseFloat(e1),
       eq: eq,
-      m: m,
+      a0: parseFloat(a2),
+      b0: parseFloat(b2),
     };
     try {
-      const response = await fetch("http://localhost:5000/lab2/eq", {
+      const response = await fetch("http://localhost:5000/lab2/s", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,9 +53,9 @@ const LSystem = () => {
       });
       if (response.ok) {
         const result = await response.json();
-        setResultx(result.x);
-        setResultf(result.f);
-        setResultk(result.k);
+        setResultX(result.x);
+        setResultK(result.k);
+        setResultY(result.y);
       } else {
         const errr = await response.text();
         setErr(errr.toString().replace("{\"error\"\:\"","").replace("\"}",""));
@@ -66,28 +70,31 @@ const LSystem = () => {
       <div className="flex row fullwidth">
         <div className="flex halfscreen column">
           <RadioButtonsSystem value={eq} setValue={setValue} />
-          <RadioMethodS value={m} setValue={setM} />
+          <RadioMethodS />
         </div>
         <div className="halfscreen flex column">
           <GraphS eq={eq}></GraphS>
           <form onSubmit={handleClick}>
-            <InputLinear
-              method={m}
+            <InputSystem
               a={a}
               b={b}
               ee={ee}
               setA={setA}
               setB={setB}
               setE={setE}
+              a0 = {a0}
+              setA0 = {setA0}
+              b0 = {b0}
+              setB0 = {setB0}
             />
             {err && <Alerts message={err} />}
             <ButtonSubmit></ButtonSubmit>
           </form>
         </div>
         <div className="halfscreen">
-          {resultx && <h3>X value: {resultx}</h3>}
-          {resultf && <h3>F(x): {resultf}</h3>}
-          {(resultk||resultx) && <h3>Iteration count: {resultk}</h3>}
+          {resultX && <h3>X value: {resultX}</h3>}
+          {(resultK||resultX) && <h3>Iteration count: {resultK}</h3>}
+          {resultY && <h3>Y value: {resultY}</h3>}
         </div>
       </div>
     </div>

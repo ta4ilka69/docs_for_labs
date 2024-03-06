@@ -40,14 +40,6 @@ export default function RadioButtonsSystem({ value, setValue }) {
             </Mafs>
           }
         </div>
-        <div className="flex radiolinear center_self">
-          <FormControlLabel value="3" control={<Radio />} label="" />{" "}
-          {
-            <Mafs width={300} height={110} pan={false}>
-              <LaTeX at={[0, 0]} tex={String.raw`\begin{cases} \sin{2y}-5x=1 \\ \cos{4x}-2y=4 \end{cases}`} />
-            </Mafs>
-          }
-        </div>
       </RadioGroup>
     </FormControl>
   );

@@ -46,8 +46,6 @@ class Equations:
         return {"x": x, "f": self.eq[i](x), "k":k}
     
     def check_for_roots(self,a,b,i,s):
-        if s>100:
-            return True
         if(self.eq[i](a)*self.eq[i](b)>0):
             raise ValueError("The function has no roots in the given interval")
     

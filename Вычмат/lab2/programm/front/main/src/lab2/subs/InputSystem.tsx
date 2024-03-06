@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-export default function InputLinear({ a, b, ee, setA, setB, setE }) {
+export default function InputSystem({a, b, ee, setA, setB, setE, a0, setA0, b0, setB0 }) {
   let usersData = (
     <div className="inputColumn">
       <TextField
@@ -31,7 +31,26 @@ export default function InputLinear({ a, b, ee, setA, setB, setE }) {
           setE(e.target.value)
         }
       />
+      <TextField
+        required
+        id="outlined-required"
+        label="a0"
+        value={a0}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setA0(e.target.value)
+        }
+      />
+      <TextField
+        required
+        id="outlined-required"
+        label="b0"
+        value={b0}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setB0(e.target.value)
+        }
+      />
     </div>
+    
   );
   return (
     <Box

@@ -40,7 +40,7 @@ class Integrals:
             if len(risks)%10 == 0 and len(risks)!=0:
                 self.check_converging(risks)
                 risks.clear()
-            if current_partions>2**21:
+            if current_partions>2**20:
                 darbu_sums = nan
                 break
         if (str(darbu_sums) == str(nan)) and depth==0:
@@ -52,9 +52,9 @@ class Integrals:
         elif (str(darbu_sums) == str(nan)) and depth==2:
             self.b = self.b-self.eps**2
             return self.integrating(mode,3)
-        elif (str(darbu_sums) == str(nan)) and depth==3 and current_partions<=2**21 or "inf" in str(darbu_sums) or "inf" in str(previous_int):
+        elif (str(darbu_sums) == str(nan)) and depth==3 and current_partions<=2**20 or "inf" in str(darbu_sums) or "inf" in str(previous_int):
             raise ValueError("The integral is not converging or the function is not defined in the given interval")
-        elif current_partions>2**21 and depth==3:
+        elif current_partions>2**20 and depth==3:
             raise ValueError("Computation time exceeded, try to use another method or decrease the interval length") 
         else:
             return Answer(darbu_sums,current_partions//2)

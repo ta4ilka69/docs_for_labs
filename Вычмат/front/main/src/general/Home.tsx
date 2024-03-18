@@ -1,7 +1,7 @@
 import React from "react";
 
 const Home = () => {
-  const h = (Math.floor(Math.random() * 5) + 1);
+  const h = (Math.floor(Math.random() * 6) + 1);
   return (
     <div>
       <h1>Home</h1>
@@ -12,7 +12,7 @@ const Home = () => {
 };
 
 function getClassByIndex(index: number) {
-  if (index<=3){
+  if (index<=3||index===6){
     return "honda_1";
   }
   if(index===4){

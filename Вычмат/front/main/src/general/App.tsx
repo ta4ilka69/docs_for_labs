@@ -6,6 +6,7 @@ import Lab2 from '../lab2/Lab2';
 import Home from './Home';
 import Linear from '../lab2/Linear';
 import LSystem from '../lab2/LSystem';
+import Lab3 from '../lab3/Lab3';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/lab2/linear" element={<Linear/>} />
         <Route path="/lab2/system" element={<LSystem/>} />
         <Route path="/" element={<Home/>} />
+        <Route path="/lab3" element={<Lab3/>} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>

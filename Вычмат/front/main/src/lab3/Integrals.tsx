@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import RadioButtonsGroup from "./subs/RadioEquations";
-import RadioMethodsL from "./subs/RadioMethodL";
+import { Alerts } from "../general/subs/Alert";
 import Graph from "./subs/Graph";
-import InputLinear from "./subs/InputLinear";
-import ButtonSubmit from "./subs/ButtonSubmit";
-import { Alerts } from "./subs/Alert";
+import RadioMethodsIntegral from "./subs/RadioMethodIntegral";
+import InputRadioIntegral from "./subs/InputRadioIntegral";
+import ButtonSubmit from "../general/subs/ButtonSubmit";
+import RadioIntegralFunction from "./subs/RadioIntegralFunction";
 
-const Linear = () => {
+const Integrals = () => {
   const [eq, setValue] = React.useState("1");
   const [a, setA] = useState(null);
   const [b, setB] = useState(null);
   const [ee, setE] = useState(null);
-  const [resultx, setResultx] = useState(null);
   const [resultf, setResultf] = useState(null);
   const [resultk, setResultk] = useState(null);
   const [m, setM] = useState("1");
@@ -25,7 +24,9 @@ const Linear = () => {
     let a1 = a.toString().replace(",", ".");
     let b1 = b.toString().replace(",", ".");
     let e1 = ee.toString().replace(",", ".");
-    console.log(a1, b1, e1);
+    let eqq = parseInt(eq);
+    let mm = parseInt(m);
+    console.log(a1, b1, e1, eqq, mm);
     if (isNaN(a1) || isNaN(b1) || isNaN(e1)) {
       setErr("Please enter a valid number");
       return;
@@ -35,11 +36,11 @@ const Linear = () => {
       a: parseFloat(a1),
       b: parseFloat(b1),
       e: parseFloat(e1),
-      eq: eq,
-      m: m,
+      eq: eqq,
+      m: mm,
     };
     try {
-      const response = await fetch("http://localhost:5000/lab2/eq", {
+      const response = await fetch("http://localhost:5000/lab3/int", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,49 +49,39 @@ const Linear = () => {
       });
       if (response.ok) {
         const result = await response.json();
-        setResultx(result.x);
-        setResultf(result.f);
-        setResultk(result.k);
+        setResultf(result.integral);
+        setResultk(result.partions);
       } else {
         const errr = await response.text();
         setErr(errr.toString().replace("{\"error\"\:\"","").replace("\"}",""));
       }
     } catch (error) {
-      setErr("Fetch error:" + error);
+      setErr("Fetch (SERVER) error:" + error);
     }
   };
   return (
     <div>
-      <h2>Non linear equation</h2>
+      <h2>Integrals</h2>
       <div className="flex row fullwidth">
         <div className="flex halfscreen column">
-          <RadioButtonsGroup value={eq} setValue={setValue} />
-          <RadioMethodsL value={m} setValue={setM} />
+          <RadioIntegralFunction value={eq} setValue={setValue}></RadioIntegralFunction>
+          <RadioMethodsIntegral value={m} setValue={setM}></RadioMethodsIntegral>
         </div>
         <div className="halfscreen flex column">
-          <Graph eq={eq}></Graph>
           <form onSubmit={handleClick}>
-            <InputLinear
-              method={m}
-              a={a}
-              b={b}
-              ee={ee}
-              setA={setA}
-              setB={setB}
-              setE={setE}
-            />
-            {err && <Alerts message={err} />}
+            <Graph eq={eq} />
+            <InputRadioIntegral ee={ee} setE={setE} a={a} b={b} setA={setA} setB={setB}></InputRadioIntegral>
             <ButtonSubmit></ButtonSubmit>
+            {err && <Alerts message={err} />}
           </form>
         </div>
         <div className="halfscreen">
-          {resultx && <h3>X value: {resultx}</h3>}
-          {resultf && <h3>F(x): {resultf}</h3>}
-          {(resultk||resultx) && <h3>Iteration count: {resultk}</h3>}
+          {resultf && <h3>Result: {resultf.toFixed(12)}</h3>}
+          {resultk && <h3>Partitions: {resultk}</h3>}
         </div>
       </div>
     </div>
   );
 };
 
-export default Linear;
+export default Integrals;

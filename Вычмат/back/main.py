@@ -2,9 +2,11 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import lab2.LinearEquation as le
 import lab2.System as Sy
+import lab3.Integrals as Int
+
 app = Flask(__name__)
-CORS(app, resources={r"/lab2/eq": {"origins": "http://localhost:5173"}})
-CORS(app, resources={r"/lab2/s": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"*": {"origins": "http://localhost:5173"}})
+
 
 
 @app.route('/lab2/eq',methods=['POST'])
@@ -53,5 +55,29 @@ def solve_system():
         return jsonify(s.Newton(a0,b0,a1,b1,e,eq))
     except(ValueError) as e:
         return jsonify(error=str(e)), 400
+
+
+
+@app.route('/lab3/int',methods=['POST'])
+def solve_integral():
+    try:
+        data = request.get_json()
+        a = data.get("a",0)
+        b =data.get("b",0)
+        equathion = data.get("eq", "")
+        method = data.get("m", "")
+        eps = data.get("e", "")
+        integral = Int.Integrals(a,b,equathion,method,eps)
+        answer = integral.solve()
+        return jsonify(answer.__dict__)
+    except ValueError as e:
+        return jsonify(error=str(e)), 400
+    except ZeroDivisionError as e:
+        return jsonify(error="One of the partions is infinity, use another method to check for integral coverage"), 400
+    except:
+        return jsonify(error="An error occurred"), 400
+
+
+
 if __name__ == '__main__':
     app.run()

@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 
 export function Alerts({message}) {
   return (
-    <Stack spacing={2} marginBottom={1}>
+    <Stack spacing={2} marginBottom={1} marginTop={1}>
       <Alert severity="warning">{message}</Alert>
     </Stack>
   );
@@ -12,7 +12,7 @@ export function Alerts({message}) {
 
 export function GoodAlerts({message}) {
   return (
-    <Stack spacing={2} marginBottom={1}>
+    <Stack spacing={2} marginBottom={1} marginTop={1}>
       <Alert severity="success">{message}</Alert>
     </Stack>
   );

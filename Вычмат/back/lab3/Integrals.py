@@ -6,7 +6,7 @@ class Integrals:
     f2 = lambda x: sin(pi*x)/2
     f3 = lambda x: (sqrt(x))/(exp(x)-1)
     f4 = lambda x: cos(pi*x)-exp(sin(pi*x))+1
-    f5 = lambda x: divide(divide(1,(x-1)),(x-2))
+    f5 = lambda x: divide(1,x)
     functions = [f1, f2, f3, f4, f5]
 #_________________________________________________________________________________
     def check_converging(self,risks):

@@ -17,8 +17,5 @@ class Printing:
             print("{:^3} |".format(k), end="")
             k += 1
             for n in row:
-                if isinstance(n, bool):
-                    print("{:^8} |".format(str(n)), end="")
-                else:
-                    print("{:^8.4f} |".format(n), end="")
+                print("{:^8.4f} |".format(n), end="")
             print()

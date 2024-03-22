@@ -1,103 +1,68 @@
-from util import *
 
-class function:
-    def __init__(self, a,b,e,f,f_x,f_xx):
+class square_approximation:
+    def __init__(self,a,b,e,f,dx):
         self.a = a
         self.b = b
         self.e = e
         self.f = f
-        self.f_x = f_x
-        self.f_xx = f_xx
+        self.dx = dx
+        self.x1 = None
+        self.x2 = None
+        self.x3 = None
+        self.f1 = None
+        self.f2 = None
+        self.f3 = None
+        self.result = []
+#____________________________________________________________________________________
+    def main(self,x_start):
+        self.x1 = x_start
+        self.x2 = x_start + self.dx
+        self.f1 = self.f(self.x1)
+        self.f2 = self.f(self.x2)
+        if self.f1 > self.f2:
+            self.x3 = self.x1 + 2 * self.dx
+        else:
+            self.x3 = self.x1 - self.dx
+        self.f3 = self.f(self.x3)
+        return self.finding_minimum()
 
-    def bisecting(self):
-        a = self.a
-        b = self.b
-        e = self.e
-        res = []
-        while abs(b - a) > 2*e:
-            row = [a,b]
-            x1 = (a+b-e)/2
-            x2 = (a+b+e)/2
-            row.append(x1)
-            row.append(x2)
-            fx1 = self.f(x1)
-            fx2 = self.f(x2)
-            row.append(fx1)
-            row.append(fx2)
-            xm = (a+b)/2
-            fxm = self.f(xm)
-            row.append(xm)
-            row.append(fxm)
-            if fx1>fx2:
-                a = x1
-            else:
-                b = x2
-            res.append(row)
-        return Printing(["a", "b", "x1", "x2","f(x1)","f(x2)","x","f(x)"], res)
-
-    def gold_section(self):
-        a = self.a
-        b = self.b
-        e = self.e
-        res = []
-        while abs(b - a) > 2*e:
-            row = [a,b]
-            x1 = a + 0.382*(b-a)
-            x2 = a + 0.618*(b-a)
-            row.append(x1)
-            row.append(x2)
-            fx1 = self.f(x1)
-            fx2 = self.f(x2)
-            row.append(fx1)
-            row.append(fx2)
-            x = (a+b)/2
-            row.append(x)
-            row.append(self.f(x))
-            if fx1>fx2:
-                a = x1
-            else:
-                b = x2
-            res.append(row)
-        return Printing(["a", "b", "x1", "x2","f(x1)","f(x2)","x","f(x)"], res)
+    def finding_minimum(self):
+        Fmin = min(self.f1, self.f2, self.f3)
+        if Fmin == self.f1:
+            x_min = self.x1
+        elif Fmin == self.f2:
+            x_min = self.x2
+        else:
+            x_min = self.x3
+        denominator = 2*((self.x2-self.x3)*self.f1 + (self.x3-self.x1)*self.f2+(self.x1-self.x2)*self.f3)
+        numerator = (self.x2**2-self.x3**2)*self.f1 + (self.x3**2-self.x1**2)*self.f2 + (self.x1**2-self.x2**2)*self.f3
+        self.result.append([self.x1, self.x2, self.x3, self.f1, self.f2, self.f3, x_min, Fmin, numerator,denominator,False,False,False,False])
+        if denominator == 0:
+            return self.main(x_min)
+        x_current = numerator/denominator
+        self.check(x_current,x_min)
     
-    def chord(self):
-        a = self.a
-        b = self.b
-        e = self.e
-        res = []
-        f_x_x = 10**10
-        while abs(f_x_x) > e:
-            row = [a,b]
-            f_x_a = self.f_x(a)
-            f_x_b = self.f_x(b)
-            row.append(f_x_a)
-            row.append(f_x_b)
-            x = a - f_x_a*(a-b)/(f_x_a-f_x_b)
-            row.append(x)
-            f_x_x = self.f_x(x)
-            row.append(f_x_x)
-            row.append(self.f(x))
-            if self.f_x(x) > 0:
-                b = x
-            else:
-                a = x
-            res.append(row)
-        return Printing(["a", "b", "f'(a)","f'(b)","x","f'(x)","f(x)"], res)
-    
-    def newton(self):
-        a = self.a
-        b = self.b
-        e = self.e
-        res = []
-        x = (a+b)/2
-        f_x_x = self.f_x(x)
-        while abs(f_x_x) >= e:
-            row = [x]
-            f_x_x = self.f_x(x)
-            f_xx_x = self.f_xx(x)
-            row.append(f_x_x)
-            row.append(f_xx_x)
-            x = x - f_x_x/f_xx_x
-            row.append(self.f(x))
-            res.append(row)
-        return Printing(["x", "f'(x)","f''(x)","f(x)"], res)
+    def check(self, x_current, x_min):
+        f_current = self.f(x_current)
+        self.result[-1][-4] = x_current
+        self.result[-1][-3] = f_current
+        f_min = self.f(x_min)
+        first_condition = abs((f_min-f_current)/(f_current)) < self.e
+        second_condition = abs((x_min-x_current)/(x_current)) < self.e
+        third_condition = x_current>=self.x1 and x_current<=self.x3
+        self.result[-1][-2] = bool(first_condition)
+        self.result[-1][-1] = bool(second_condition)
+        if first_condition and second_condition:
+            return x_current
+        elif third_condition:
+            xs = [self.x1,self.x2,self.x3,x_current]
+            xs.sort()
+            self.x2 = x_current
+            self.x1 = xs[xs.index(x_current)-1]
+            self.x3 = xs[xs.index(x_current)+1]
+            self.f1 = self.f(self.x1)
+            self.f2 = self.f(self.x2)
+            self.f3 = self.f(self.x3)
+            return self.finding_minimum()
+        else:
+            return self.main(x_current)

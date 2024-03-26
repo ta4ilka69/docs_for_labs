@@ -57,9 +57,9 @@ class square_approximation:
         elif third_condition:
             xs = [self.x1,self.x2,self.x3,x_current]
             xs.sort()
-            self.x2 = x_current
-            self.x1 = xs[xs.index(x_current)-1]
-            self.x3 = xs[xs.index(x_current)+1]
+            self.x2 = min(x_current,x_min)
+            self.x1 = xs[xs.index(self.x2)-1]
+            self.x3 = xs[xs.index(self.x2)+1]
             self.f1 = self.f(self.x1)
             self.f2 = self.f(self.x2)
             self.f3 = self.f(self.x3)

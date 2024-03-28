@@ -1,0 +1,32 @@
+\begin{asy}
+    texpreamble("\usepackage[T2A]{fontenc}\usepackage[utf8]{inputenc}
+\usepackage{mathtext}\usepackage[russian]{babel}\usepackage{fixltx2e}");
+    import geometry;
+    import three;
+    import solids;
+    real S = 2;
+    triple c_axis = X;
+    unitsize(S*1cm);
+    material whitem =  material(white+opacity(0.25),white);
+    material w =  material(diffusepen=white,emissivepen=white);
+    currentprojection=orthographic(600,450,200);
+    path3 front = (0,-1.5,-2)--(0,-1.5,2)--(0,1.5,2)--(0,1.5,-2)--cycle;
+    draw(front);
+    draw(surface(front), mediumgray, nolight);
+    path3 above = (0,-1.5,2)--(0,1.5,2)--(-0.2,1.5,2)--(-0.2,-1.5,2)--cycle;
+    path3 righter = (0,1.5,2)--(-0.2,1.5,2)--(-0.2,1.5,-2)--(0,1.5,-2)--cycle;
+    draw(surface(above), black);
+    draw(surface(righter),black);
+    revolution cyl_full = cylinder((-2,0,0), 0.5 , 4 , c_axis);
+    draw(surface(cyl_full),whitem);
+    revolution cyl_front = cylinder((0,0,0), 0.5 , 2 , c_axis);
+    draw(cyl_front, black+1bp);
+    draw(surface((2,0.5,0)..(2,0,-0.5)..(2,-0.5,0)..(2,0,0.5)..cycle), w);
+    for(int i = 0; i < 5; ++i) {
+        for(int j = 0; j < 3; ++j) {
+            label(scale3(S)*rotate(90,Y)*"$+$", (0.01,-1.15+j*1.15,1.6-i*0.8));
+        }
+    }
+    label(scale3(1.1*S)*rotate(90,Y)*rotate(90,Z)*"$s$", (0.01,-1.15+1*1.15,1.6-2*0.8)+(0,0.2,-0.2));
+    label(scale(S*2)*"$\sigma$",(0,-1.5,2)+(-0.5,-1,-0.5));
+\end{asy}

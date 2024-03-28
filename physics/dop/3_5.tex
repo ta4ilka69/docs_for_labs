@@ -1,0 +1,79 @@
+\begin{asy}
+    texpreamble("\usepackage[T2A]{fontenc}\usepackage[utf8]{inputenc}
+\usepackage{mathtext}\usepackage[russian]{babel}\usepackage{fixltx2e}");
+    import geometry;
+    
+    //Менять unitsize через S
+    //Иначе не будет верного размера у текстовых подписей
+    
+    real S = 1;
+    unitsize(1cm*S);
+
+    
+    //начало отсчёта
+    point center = (0,0);
+
+    //поле
+    
+    point centerField = (2.5,0);
+    draw(circle(centerField,1),S*bp+blue);
+    label(scale(S)*"$\tau$",centerField+(0.36,-0.66),bp+blue);
+    draw(circle(centerField,1.6),S*0.4*bp+blue);
+    draw(circle(centerField,2.2),S*0.4*bp+blue);
+    //заряды "+"
+    label(scale(S*0.6)*"$+$",centerField+(0,-0.85),bp+blue);
+    label(scale(S*0.6)*"$+$",centerField+(-0.60,-0.58),bp+blue);
+    label(scale(S*0.6)*"$+$",centerField+(-0.85,0),bp+blue);
+    label(scale(S*0.6)*"$+$",centerField+(-0.61,0.58),bp+blue);
+    label(scale(S*0.6)*"$+$",centerField+(-0.08,0.83),bp+blue);
+    label(scale(S*0.6)*"$+$",centerField+(0.58,0.62),bp+blue);
+    label(scale(S*0.6)*"$+$",centerField+(0.83,0.1),bp+blue);
+    label(scale(S*0.6)*"$+$",centerField+(0.68,-0.55),bp+blue);
+    
+    //векторы напряжённости
+    for(int i = 0; i<=8;++i){
+    draw(centerField+dir(30+i*45)--centerField+(1.5,0)*dir(30+i*45)+dir(30+i*45), S * 0.4 * bp + blue, EndArrow(arrowhead = TeXHead));
+    }
+    label(scale(S*0.9)*"$\varphi=const$",centerField+(1.5,0)*dir(30+2*45)+dir(30+2*45)-(1,0.3));
+
+    label(scale(S)*"$\vec{E}$",centerField+(1.5,0)*dir(30+4*45)+dir(30+4*45)-(0.2,-0.4));
+
+    label(scale(S)*"$\vec{E}$",centerField+(1.5,0)*dir(30+4*45)+dir(30+4*45)-(0.2,-0.4));
+    
+    label(scale(S*0.73)*"$R$",centerField+(1.3,0)*dir(7));
+
+    //цилиндр
+    draw((-4.05,-1.575)--(-3.65,-0.975));
+    draw((-3.65,-0.975)--(-2.35,0.975),dashed);
+    draw((-4.2,-1.5)--(-3.8,-0.9));
+    draw((-3.8,-0.9)--(-2.5,1.05),dashed);
+    path above = (-2,1.5)--(-2.35,0.975)..(-2.42,1.04)..(-2.5,1.05)--(-2.2 ,1.5)--cycle;
+    label(scale(0.5*S)*"$\tau$",(-2.35,0.975)+(0.2,0.1));
+    draw(above);
+    draw((-2,1.5)--(-2.2,1.5), bp+white);
+    axialshade(above,gray,(-2.44,1.06),white,(-2.1,1.5));
+    //большой цилиндр
+    path big = (-2.9,0.98)..(-2.62,1.09)..(-2.2,0.55)--(-3.2,-0.95)..(-3.62,-0.41)..(-3.9,-0.52)--cycle;
+    draw(big);
+    axialshade(big,gray, (-3.62,-0.41),lightgray,(-2.62,1.09));
+    draw((-4.05,-1.575)--(-3.65,-0.975));
+    draw((-3.65,-0.975)--(-2.35,0.975),dashed);
+    draw((-4.2,-1.5)--(-3.8,-0.9));
+    draw((-3.8,-0.9)--(-2.5,1.05),dashed);
+    draw(circle((-3.624,-0.855),0.436));
+
+    label(scale(S*0.5)*"$l$",(-3.4,0.23)+(-0.1,0.1));  
+
+    //нижний край
+    path under = (-3.7,-0.75)..(-3.62,-0.74)..(-3.55,-0.825)--(-4.05,-1.575)--(-4.2,-1.5)--cycle;
+
+    label(scale(S*0.5)*"$r$",(-3.63,-0.975)+(0.1,0));
+    
+    draw(under);
+
+    axialshade(under,gray, (-4.125,-1.5325), white, (-3.62,-0.74));
+    filldraw(circle((-4.125,-1.5325),0.085),white);
+    label(scale(S*0.5)*"$R$",(-4.210,-1.5325)-(.12,0));
+    draw((-3.03,0.1)--(-1.7,-0.5),0.2*bp+black,EndArrow);
+    label(scale(S*0.5)*"$\vec{E}$",(-1.7,-0.5)+(0,-0.2));
+\end{asy}

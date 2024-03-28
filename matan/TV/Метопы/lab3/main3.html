@@ -7502,7 +7502,7 @@ a.anchor-link {
 <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">e</span> <span class="o">=</span> <span class="mf">0.0001</span>
-<span class="n">dx</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">func</span> <span class="o">=</span> <span class="n">square_approximation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">dx</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7538,17 +7538,17 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Square approximation method: x =  1.670241078666522
-f(x) =  3.3733904921575437
+<pre>Square approximation method: x =  1.6301716502976378
+f(x) =  3.3816093009964625
 
  k  |   x1    |   x2    |   x3    |   f1    |   f2    |   f3    |  xmin   |  Fmin   | Числ.   |Знамен.  |   x*    | f(x*)   | Усл.1   | Усл.2   |
 -------------------------------------------------------------------------------------------------------------------------------------------------
- 1  | 0.0000  | 1.0000  | 2.0000  |12.0000  | 5.2500  | 4.0000  | 2.0000  | 4.0000  |-19.0000 |-11.0000 | 1.7273  | 3.3906  | False   | False   |
- 2  | 1.0000  | 1.7273  | 2.0000  | 5.2500  | 3.3906  | 4.0000  | 1.7273  | 3.3906  |-3.0990  |-1.9007  | 1.6304  | 3.3815  | False   | False   |
- 3  | 1.0000  | 1.6304  | 1.7273  | 5.2500  | 3.3815  | 3.3906  | 1.6304  | 3.3815  |-0.6225  |-0.3733  | 1.6677  | 3.3734  | False   | False   |
- 4  | 1.6304  | 1.6677  | 1.7273  | 3.3815  | 3.3734  | 3.3906  | 1.6677  | 3.3734  |-0.0037  |-0.0022  | 1.6699  | 3.3734  |  True   | False   |
- 5  | 1.6677  | 1.6699  | 1.7273  | 3.3734  | 3.3734  | 3.3906  | 1.6699  | 3.3734  |-0.0001  |-0.0001  | 1.6702  | 3.3734  |  True   | False   |
- 6  | 1.6699  | 1.6702  | 1.7273  | 3.3734  | 3.3734  | 3.3906  | 1.6702  | 3.3734  |-0.0000  |-0.0000  | 1.6702  | 3.3734  |  True   |  True   |
+ 1  | 0.0000  | 0.5000  | 1.0000  |12.0000  | 8.2656  | 5.2500  | 1.0000  | 5.2500  |-2.0469  |-0.7188  | 2.8478  |13.7710  | False   | False   |
+ 2  | 2.8478  | 3.3478  | 2.3478  |13.7710  |27.8298  | 6.3260  | 2.3478  | 6.3260  |-13.4591 |-6.6138  | 2.0350  | 4.1486  | False   | False   |
+ 3  | 2.0350  | 2.5350  | 1.5350  | 4.1486  | 8.4702  | 3.4642  | 1.5350  | 3.4642  |-6.1501  |-3.6371  | 1.6909  | 3.3756  | False   | False   |
+ 4  | 1.6909  | 2.1909  | 1.1909  | 3.3756  | 5.0330  | 4.3939  | 1.6909  | 3.3756  |-4.3644  |-2.6756  | 1.6312  | 3.3812  | False   | False   |
+ 5  | 1.6312  | 2.1312  | 1.1312  | 3.3812  | 4.6498  | 4.6394  | 1.6312  | 3.3812  |-4.1191  |-2.5268  | 1.6302  | 3.3816  | False   | False   |
+ 6  | 1.6302  | 2.1302  | 1.1302  | 3.3816  | 4.6437  | 4.6438  | 1.6302  | 3.3816  |-4.1151  |-2.5243  | 1.6302  | 3.3816  |  True   |  True   |
 </pre>
 </div>
 </div>

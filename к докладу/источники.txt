@@ -1,3 +1,4 @@
 https://habr.com/ru/companies/mvideo/articles/726790/
 для сравнения производительности https://www.nvidia.com/ru-ru/data-center/a100/ (цена на рынке ~2.200.000 рублей)
 https://youtu.be/MCIhB7Sy9NU
+https://www.iotone.com/podcast/ep-185-bringing-ai-to-the-edge-with-analog-computing-dave-fick-co-founder-ceo-mythic/p235

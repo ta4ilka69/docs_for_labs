@@ -1,5 +1,4 @@
-\begin{asy}
-    settings.outformat="pdf";
+\begin{asypicture}{name=p33}
     texpreamble("\usepackage[T2A]{fontenc}\usepackage[utf8]{inputenc}
 \usepackage{mathtext}\usepackage[russian]{babel}\usepackage{fixltx2e}");
     import geometry;
@@ -49,4 +48,4 @@
     label(scale(S)*"$\vec{E}$",centerField+(1.5,0)*dir(30+4*45)+dir(30+4*45)-(0.2,-0.4));
     
     label(scale(S*0.73)*"$R$",centerField+(1.3,0)*dir(7));
-\end{asy}
+\end{asypicture}

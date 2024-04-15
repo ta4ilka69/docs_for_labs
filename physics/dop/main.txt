@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{asymptote} 
+\usepackage{asypictureB}
+\usepackage[T2A]{fontenc}
+\title{Доп. по физике (рисунки)}
+\author{Балин Артем}
+\date{February 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Лекция 3}
+\subsection{Рисунок 3}
+\begin{figure}[h]
+    \centering
+    \scalebox{1}{\input{im3_3.tex}}
+\end{figure}
+\subsection{Рисунок 5}
+\begin{figure}[h]
+  \centering
+  \scalebox{1}{\input{im3_5.tex}}
+\end{figure}
+\subsection{Рисунок 7}
+\begin{figure}[h]
+  \centering
+  \scalebox{1}{\input{im3_7.tex}}
+\end{figure}
+\end{document}

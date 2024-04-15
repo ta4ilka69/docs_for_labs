@@ -7,6 +7,7 @@ import Home from './Home';
 import Linear from '../lab2/Linear';
 import LSystem from '../lab2/LSystem';
 import Lab3 from '../lab3/Lab3';
+import Lab4 from '../lab4/Lab4';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/lab2/system" element={<LSystem/>} />
         <Route path="/" element={<Home/>} />
         <Route path="/lab3" element={<Lab3/>} />
+        <Route path="/lab4" element={<Lab4/>} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>

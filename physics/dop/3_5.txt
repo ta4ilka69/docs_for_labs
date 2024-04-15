@@ -1,4 +1,4 @@
-\begin{asy}
+\begin{asypicture}{name=p35}
     texpreamble("\usepackage[T2A]{fontenc}\usepackage[utf8]{inputenc}
 \usepackage{mathtext}\usepackage[russian]{babel}\usepackage{fixltx2e}");
     import geometry;
@@ -76,4 +76,4 @@
     label(scale(S*0.5)*"$R$",(-4.210,-1.5325)-(.12,0));
     draw((-3.03,0.1)--(-1.7,-0.5),0.2*bp+black,EndArrow);
     label(scale(S*0.5)*"$\vec{E}$",(-1.7,-0.5)+(0,-0.2));
-\end{asy}
+\end{asypicture}

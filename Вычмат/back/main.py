@@ -80,4 +80,6 @@ def solve_integral():
 
 
 if __name__ == '__main__':
+    #st = "def f(x): return x**2"
+    #exec(st)
     app.run()

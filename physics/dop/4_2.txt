@@ -1,0 +1,44 @@
+\begin{asy}
+    texpreamble("\usepackage[T2A]{fontenc}\usepackage[utf8]{inputenc}
+\usepackage{mathtext}\usepackage[russian]{babel}\usepackage{fixltx2e}\usepackage{upgreek}\usepackage{gensymb}");
+    import geometry;
+    
+    //Менять unitsize через S
+    //Иначе не будет верного размера у текстовых подписей
+    
+    real S = 1;
+    unitsize(1cm*S);
+    real r1 = 1;
+    pair circle_center1 = (3*r1,0);
+    draw(circle(circle_center1,0.75*r1), S*1bp+black);
+    path centr = (-1.75*r1,0)--(2.25*r1,0);
+    draw(centr);
+    pair circle_center = (-3*r1,0);
+
+    draw(circle(circle_center,1.25*r1),S*1bp+black);
+    label(scale(S*1)*"$a$",(0.6,0.3));
+    label(scale(S*1)*"$R_1$",circle_center);
+    label(scale(S*1)*"$R_2$",circle_center1);
+    int num_points = 24;
+    real angle_step = 2*pi/num_points;
+    real circle_radius = 1.25*r1+0.3;
+    for(int i = 0;i<num_points;++i){
+    real angle = i * angle_step+10;
+    pair point_on_circle = circle_center + circle_radius * dir(degrees(angle));
+    draw(point_on_circle+(0.1,0)--point_on_circle+(-0.1,0), S*1bp+black);
+    draw(point_on_circle+(0,0.1)--point_on_circle+(0,-0.1), S*1bp+black);
+    }
+    label(scale(1*S)*"$\sigma_1$",(-5.1*r1,0.6));
+    label(scale(1*S)*"$\sigma_2$",(1.7*r1,0.6));
+
+
+    int num_points = 16;
+    real angle_step = 2*pi/num_points;
+    real circle_radius = 0.75*r1+0.2;
+    for(int i = 0;i<num_points;++i){
+    real angle = i * angle_step+10;
+    pair point_on_circle = circle_center1 + circle_radius * dir(degrees(angle));
+    draw(point_on_circle+(0.1,0)--point_on_circle+(-0.1,0), S*1bp+black);
+    draw(point_on_circle+(0,0.1)--point_on_circle+(0,-0.1), S*1bp+black);
+    }
+\end{asy}

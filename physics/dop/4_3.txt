@@ -1,0 +1,78 @@
+\begin{asy}
+    texpreamble("\usepackage[T2A]{fontenc}\usepackage[utf8]{inputenc}
+\usepackage{mathtext}\usepackage[russian]{babel}\usepackage{fixltx2e}\usepackage{upgreek}\usepackage{gensymb}");
+    import geometry;
+    
+    //Менять unitsize через S
+    //Иначе не будет верного размера у текстовых подписей
+    
+    real S = 2;
+    unitsize(1cm*S);
+    for(int i = 0;i<6;++i){
+    draw((-3,0.8*i)--(3,0.8*i),dashed+S*0.8bp+black);
+    draw((-0.3,0.8*i)--(0.3,0.8*i),S*0.7bp+black,EndArrow(arrowhead=HookHead));
+    if(i==5){
+    label(scale(1.1*S)*"$\overrightarrow{E_0}$",(0,0.8*i)+(0,0.5));
+    }
+    }
+
+    path curve = (-0.8,3.46)..(-0.9,3.44)..(-1.2,3.4)..(-1.36,3.2)..(-1.4,2.9)..(-1.4,1.8)..(-1.36,1.4)..(-0.9,1.1)..(-0.5,0.8)..(0.4,0.7)..(0.9,0.8)..(1.3,1.3)..(1.7,2.3)..(1.6,2.9)..(1.4,3.1)..cycle;
+    draw(curve, S*1.2bp+black);
+    
+    real r = 0.17;
+    point m1 = (-0.85,3.15);
+    circle cm1 = circle(m1,r);
+    filldraw(cm1,white,S*0.8bp+black);
+    draw(m1-(0.09,0)--m1+(0.09,0),S*0.8bp+black);
+    
+    point m2 = (-1.05,2.8);
+    circle cm2 = circle(m2,r);
+    filldraw(cm2,white,S*0.8bp+black);
+    draw(m2-(0.09,0)--m2+(0.09,0),S*0.8bp+black);
+    
+    point m3 = (-1.1,2.35);
+    circle cm3 = circle(m3,r);
+    filldraw(cm3,white,S*0.8bp+black);
+    draw(m3-(0.09,0)--m3+(0.09,0),S*0.8bp+black);
+    
+    point m4 = (-1,1.9);
+    circle cm4 = circle(m4,r);
+    filldraw(cm4,white,S*0.8bp+black);
+    draw(m4-(0.09,0)--m4+(0.09,0),S*0.8bp+black);
+    
+    point m5 = (-0.8,1.3);
+    circle cm5 = circle(m5,r);
+    filldraw(cm5,white,S*0.8bp+black);
+    draw(m5-(0.09,0)--m5+(0.09,0),S*0.8bp+black);
+
+    point p1 = (0.85,3.1);
+    circle cp1 = circle(p1,r);
+    filldraw(cp1,white,S*0.8bp+black);
+    draw(p1-(0.09,0)--p1+(0.09,0),S*0.8bp+black);
+    draw(p1-(0,0.09)--p1+(0,0.09),S*0.8bp+black);
+
+
+    point p2 = (1.3,2.7);
+    circle cp2 = circle(p2,r);
+    filldraw(cp2,white,S*0.8bp+black);
+    draw(p2-(0.09,0)--p2+(0.09,0),S*0.8bp+black);
+    draw(p2-(0,0.09)--p2+(0,0.09),S*0.8bp+black);
+
+    point p3 = (1.2,2.1);
+    circle cp3 = circle(p3,r);
+    filldraw(cp3,white,S*0.8bp+black);
+    draw(p3-(0.09,0)--p3+(0.09,0),S*0.8bp+black);
+    draw(p3-(0,0.09)--p3+(0,0.09),S*0.8bp+black);
+
+    point p4 = (1.15,1.5);
+    circle cp4 = circle(p4,r);
+    filldraw(cp4,white,S*0.8bp+black);
+    draw(p4-(0.09,0)--p4+(0.09,0),S*0.8bp+black);
+    draw(p4-(0,0.09)--p4+(0,0.09),S*0.8bp+black);
+
+    point p5 = (0.85,1.1);
+    circle cp5 = circle(p5,r);
+    filldraw(cp5,white,S*0.8bp+black);
+    draw(p5-(0.09,0)--p5+(0.09,0),S*0.8bp+black);
+    draw(p5-(0,0.09)--p5+(0,0.09),S*0.8bp+black);
+\end{asy}

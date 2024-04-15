@@ -10,8 +10,14 @@
 .radiolinear{
     margin-bottom: 2vh;
 }
+.marg-left{
+    margin-left: 10vw;
+}
 .halfscreen{
     width: 33%;
+}
+.smaller{
+    width: 25%;
 }
 .fullwidth{
     width: 100%;

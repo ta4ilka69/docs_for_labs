@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import React from "react";
 import Typography from "@mui/material/Typography";
+import Approximation from "./Approximation";
 
 const Lab4 = () => {
   return (
@@ -13,6 +14,7 @@ const Lab4 = () => {
       >
         Lab 4
       </Typography>
+      <Approximation/>
     </Box>
   );
 };

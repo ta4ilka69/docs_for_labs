@@ -39,6 +39,7 @@ const Approximation = () => {
   const [S5, setS5] = useState(null);
   const [S6, setS6] = useState(null);
   const [f, setF] = useState(null);
+  const [kor,setKor] = useState(null);
   const handleClick = async (e) => {
     e.preventDefault();
     if (eq === null || start === null || end === null) {
@@ -94,6 +95,7 @@ const Approximation = () => {
         setDe5(result.aebx.delta);
         setDe6(result.alnx.delta);
         setF(result.f);
+        setKor(result.linear.r);
       } else {
         const errr = await response.text();
         setErr(errr.toString().replace('{"error":"', "").replace('"}', ""));
@@ -172,6 +174,7 @@ const Approximation = () => {
             S4={S4}
             S5={S5}
             S6={S6}
+            kor={kor}
           ></FunctionList>
         </div>
       </div>

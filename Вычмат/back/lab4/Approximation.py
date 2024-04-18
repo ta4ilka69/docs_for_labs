@@ -1,4 +1,11 @@
 from math import sin, cos, tan, exp, log, sqrt, pi
+def cot(x):
+    return 1/tan(x)
+def csc(x):
+    return 1/sin(x)
+def sec(x):
+    return 1/cos(x)
+
 from copy import deepcopy
 import lab1.matrix as matrix
 e = exp(1)

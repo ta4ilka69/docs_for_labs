@@ -28,12 +28,12 @@ export default function Graph({
   return (
     <Mafs zoom={{ min: 0.3, max: 4 }}>
       <Coordinates.Cartesian subdivisions={10} />
-      {a1 !== null && b1 !== null && <Plot.OfX y={f1} color={Theme.yellow} minSamplingDepth={12} />}
-      {a2 !== null && b2 !== null && c2 !== null && <Plot.OfX y={f2} color={Theme.blue} minSamplingDepth={12} />}
-      {a3 !== null && b3 !== null && c3 !== null && d3 !== null && <Plot.OfX y={f3} color={Theme.orange} minSamplingDepth={12} />}
-      {a4 !== null && b4 !== null && <Plot.OfX y={f4} color={Theme.red} minSamplingDepth={12} />}
-      {a5 !== null && b5 !== null && <Plot.OfX y={f5} color={Theme.pink} minSamplingDepth={12} />}
-      {a6 !== null && b6 !== null && <Plot.OfX y={f6} color={Theme.green} minSamplingDepth={12} />}
+      {a1 !== null && b1 !== null && <Plot.OfX y={f1} color={Theme.yellow} minSamplingDepth={14} />}
+      {a2 !== null && b2 !== null && c2 !== null && <Plot.OfX y={f2} color={Theme.blue} minSamplingDepth={14} />}
+      {a3 !== null && b3 !== null && c3 !== null && d3 !== null && <Plot.OfX y={f3} color={Theme.orange} minSamplingDepth={14} />}
+      {a4 !== null && b4 !== null && <Plot.OfX y={f4} color={Theme.red} minSamplingDepth={14} />}
+      {a5 !== null && b5 !== null && <Plot.OfX y={f5} color={Theme.pink} minSamplingDepth={14} />}
+      {a6 !== null && b6 !== null && <Plot.OfX y={f6} color={Theme.green} minSamplingDepth={14} />}
     </Mafs>
   );
 }

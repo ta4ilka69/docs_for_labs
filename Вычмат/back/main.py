@@ -56,6 +56,8 @@ def solve_system():
         return jsonify(s.Newton(a0,b0,a1,b1,e,eq))
     except(ValueError) as e:
         return jsonify(error=str(e)), 400
+    except:
+        return jsonify(error="An error occurred"), 400
 
 
 

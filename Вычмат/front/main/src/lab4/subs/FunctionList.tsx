@@ -30,6 +30,7 @@ export default function FunctionList({
   de4,
   de5,
   de6,
+  kor
 }) {
   return (
     <div className="flex column center_items">
@@ -48,6 +49,7 @@ export default function FunctionList({
           }
           {de1 != null && <h4>d: {de1.toFixed(4)}</h4>}
           {S1 != null && <h4>S: {S1.toFixed(4)}</h4>}
+          {kor != null && <h4>r: {kor.toFixed(4)}</h4>}
         </div>
       )}
       {a2 != null && b2 != null && c2 != null && (
@@ -65,6 +67,7 @@ export default function FunctionList({
           }
           {de2 != null && <h4>d: {de2.toFixed(4)}</h4>}
           {S2 != null && <h4>S {S2.toFixed(4)}</h4>}
+          
         </div>
       )}
       {a3 != null && b3 != null && c3 != null && d3 != null && (

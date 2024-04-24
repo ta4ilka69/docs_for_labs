@@ -6,7 +6,7 @@
     //Менять unitsize через S
     //Иначе не будет верного размера у текстовых подписей
     
-    real S = 2;
+    real S = 1.5;
     unitsize(1cm*S);
     for(int i = 0;i<6;++i){
     draw((-3,0.8*i)--(3,0.8*i),dashed+S*0.8bp+black);
@@ -75,4 +75,35 @@
     filldraw(cp5,white,S*0.8bp+black);
     draw(p5-(0.09,0)--p5+(0.09,0),S*0.8bp+black);
     draw(p5-(0,0.09)--p5+(0,0.09),S*0.8bp+black);
+
+    //In/Out arrows
+    path li1 = (-2.9,3.9)..(-2.25,3.93)..(-1.2,3.39);
+    draw(li1,S*0.7*bp+black,EndArrow);
+    path lo1 = (1.2,3.25)..(2.25,3.85)..(2.7,3.8)..(2.9,3.8);
+    draw(lo1,S*0.7*bp+black,EndArrow);
+
+    path li2 = (-2.9,3.1)..(-2.15,3)..(-1.4,2.7);
+    draw(li2,S*0.7*bp+black,EndArrow);
+    path lo2 = (1.7,2.7)..(2.7,3.03)..(2.9,3);
+    draw(lo2,S*0.7*bp+black,EndArrow);
+
+    path li3 = (-2.9,2.3)..(-2.15,2.25)..(-1.4,2.15);
+    draw(li3,S*0.7*bp+black,EndArrow);
+    path lo3 = (1.67,2.15)..(2.9,2.15);
+    draw(lo3,S*0.7*bp+black,EndArrow);
+
+    path li4 = (-2.9,1.7)..(-2.15,1.75)..(-1.4,1.9);
+    draw(li4,S*0.7*bp+black,EndArrow);
+    path lo4 = (1.6,1.9)..(1.9,1.85)..(2.9,1.8);
+    draw(lo4,S*0.7*bp+black,EndArrow);
+    
+    path li5 = (-2.9,0.9)..(-2.1,0.95)..(-1.1,1.2);
+    draw(li5,S*0.7*bp+black,EndArrow);
+    path lo5 = (1.26,1.2)..(1.9,1)..(2.9,0.95);
+    draw(lo5,S*0.7*bp+black,EndArrow);
+
+    path li6 = (-2.9,0.15)..(-2.0,0.1)..(-0.7,0.9);
+    draw(li6,S*0.7*bp+black,EndArrow);
+    path lo6 = (1.05,0.9)..(1.9,0.2)..(2.9,0.15);
+    draw(lo6,S*0.7*bp+black,EndArrow);
 \end{asy}

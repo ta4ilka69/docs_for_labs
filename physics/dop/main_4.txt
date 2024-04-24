@@ -14,17 +14,17 @@
 
 \section{Лекция 4}
 \subsection{Рисунок 1}
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \scalebox{1}{\input{im4_1.tex}}
 \end{figure}
 \subsection{Рисунок 2}
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \scalebox{1}{\input{im4_2.tex}}
 \end{figure}
 \subsection{Рисунок 3}
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \scalebox{1}{\input{im4_3.tex}}
 \end{figure}

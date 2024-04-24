@@ -1,0 +1,45 @@
+\begin{asy}
+    texpreamble("\usepackage[T2A]{fontenc}\usepackage[utf8]{inputenc}
+\usepackage{mathtext}\usepackage[russian]{babel}\usepackage{fixltx2e}\usepackage{upgreek}\usepackage{gensymb}");
+    import geometry;
+    //Менять unitsize через S
+    //Иначе не будет верного размера у текстовых подписей (а также ширина линий)
+
+    //axes
+    real S = 0.6;
+    unitsize(1cm*S);
+    draw((-6,0)--(6,0), 2*S*bp+black);
+    draw((0,-6)--(0,2),2*S*bp+black);
+    draw((0,2)--(0,4),1.5*S*bp+black+dashed);
+    draw((0,4)--(0,6),2*S*bp+black);
+    label(scale(S*1.9)*"$\varepsilon_1$",(-5.6,0.6));
+    label(scale(S*1.9)*"$\varepsilon_2$",(-5.6,-0.6));
+
+    //vecs
+    draw((0,0)--(-1.6,0),S*3.5*bp+black,EndArrow(size=15*S));
+    label(scale(S*1.9)*"$\vec{D}_{2\uptau}$",(-0.8,0.8));
+
+    draw((0,0)--(0,-4.3),S*3.5*bp+black,EndArrow(size=15*S));
+    label(scale(S*1.9)*"$\vec{D}_{2n}$",(0,-2.3)+(0.8,0));
+
+    draw((-1.6,0)--(-1.6,-4.3),1.4*S*bp+black+dashed);
+    draw((0,-4.3)--(-1.6,-4.3),1.4*S*bp+black+dashed);
+
+    draw((0,0)--(-1.6,-4.3),S*3.5*bp+black,EndArrow(size=15*S));
+
+    draw((3,4.5)--(0,0),S*3.5*bp+black,EndArrow(size=15*S));
+
+    draw((3,4.5)--(3,0.05),S*3.5*bp+black,EndArrow(size=15*S));
+    label(scale(S*1.9)*"$\vec{D}_{1n}$",(3,2.3)+(0.8,0));
+
+    draw((3,4.5)--(0.05,4.5),S*3.5*bp+black,EndArrow(size=15*S));
+    label(scale(S*1.9)*"$\vec{D}_{1\uptau}$",(1.5,4.5)+(0,0.8));
+
+    //angles
+    draw((0,2.3)..(1,2.33)..(1.25,1.87),1.4*S*bp+black);
+    label(scale(S*1.9)*"$\alpha_1$",(0.7,2.9));
+
+    draw((0,-2.5)..(-0.4,-2.51)..(-0.83,-2.16),1.4*S*bp+black);
+    label(scale(S*1.9)*"$\alpha_2$",(-0.45,-2.9));
+
+\end{asy}

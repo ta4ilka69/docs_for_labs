@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{asymptote} 
+\usepackage{asypictureB}
+\usepackage[T2A]{fontenc}
+
+\title{Доп. по физике (рисунки)}
+\author{Балин Артем}
+\date{April 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Лекция 5}
+\subsection{Рисунок 6}
+\begin{figure}[ht]
+    \centering
+    \scalebox{1}{\input{5_1.tex}}
+\end{figure}
+\subsection{Рисунок 9}
+\begin{figure}[ht]
+  \centering
+  \scalebox{1}{\input{5_2.tex}}
+\end{figure}
+\end{document}

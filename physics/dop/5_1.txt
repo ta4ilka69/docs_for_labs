@@ -1,0 +1,57 @@
+\begin{asy}
+    texpreamble("\usepackage[T2A]{fontenc}\usepackage[utf8]{inputenc}
+\usepackage{mathtext}\usepackage[russian]{babel}\usepackage{fixltx2e}\usepackage{upgreek}\usepackage{gensymb}");
+    import geometry;
+    
+    //Менять unitsize через S
+    //Иначе не будет верного размера у текстовых подписей
+    
+    real S = 1;
+    unitsize(1cm*S);
+    path object = (0,0)..(1,1)..(1.3,1.1)..(2,0.95)..(3.5,0.35)..(4.4,-0.8)..(4,-0.9)..(3.4,-1.15)..(3.2,-1.2)..(3,-1.19)..(1,-0.6)..(0.1,-0.1)..cycle; 
+    filldraw(object, lightgray,S*bp*0.8+black);
+    draw((0.5,-0.36)--(0.5,0.79),S*bp*0.8+black,Arrow(size=5*S,position=0.7,arrowhead=SimpleHead));
+    draw((1,-0.6)--(1,1),S*bp*0.8+black,Arrow(size=5*S,position=0.6,arrowhead=SimpleHead));
+draw((1.5,-0.8)--(1.5,1.1),S*bp*0.8+black,Arrow(size=5*S,position=0.6,arrowhead=SimpleHead));
+draw((2,-0.95)--(2,0.95),S*bp*0.8+black,Arrow(size=5*S,position=0.5,arrowhead=SimpleHead));
+draw((2.5,-1.1)--(2.5,0.71),S*bp*0.8+black,Arrow(size=5*S,position=0.5,arrowhead=SimpleHead));
+draw((3,-1.18)--(3,0.5),S*bp*0.8+black,Arrow(size=5*S,position=0.5,arrowhead=SimpleHead));
+draw((3.5,-1.09)--(3.5,0.35),S*bp*0.8+black,Arrow(size=5*S,position=0.5,arrowhead=SimpleHead));
+draw((4,-0.9)--(4,0.16),S*bp*0.8+black,Arrow(size=5*S,position=0.5,arrowhead=SimpleHead));
+label(scale(S*0.8)*"$P$",(4,-0.63)+(0.2,0.2));
+point center1 = (2.2,-0.1);
+draw(center1,bp*S*3.3+black);
+draw(circle(center1,0.5),0.6*S*bp+black+dashed);
+label(scale(S*0.8)*"$A$",center1+(0.16,0));
+label(scale(S*1.4)*"$=$",(5.2,-0.1));
+
+
+point plus = (6,0);
+
+    path object = (0,0)+plus..(1,1)+plus..(1.3,1.1)+plus..(2,0.95)+plus..(3.5,0.35)+plus..(4.4,-0.8)+plus..(4,-0.9)+plus..(3.4,-1.15)+plus..(3.2,-1.2)+plus..(3,-1.19)+plus..(1,-0.6)+plus..(0.1,-0.1)+plus..cycle; 
+    filldraw(object, lightgray,S*bp*0.8+black);
+    point center2 = (2.2,-0.1)+plus;
+
+
+filldraw(circle(center2,0.5),white,1*S*bp+black);
+draw(center2,bp*S*3.3+black);
+label(scale(S*0.8)*"$A$",center2+(0,0.25));
+
+
+    draw((0.5,-0.36)+plus--(0.5,0.79)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.7,arrowhead=SimpleHead));
+    draw((1,-0.6)+plus--(1,1)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.6,arrowhead=SimpleHead));
+draw((1.5,-0.8)+plus--(1.5,1.1)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.6,arrowhead=SimpleHead));
+draw((2,-0.95)+plus--(2,0.95)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.2,arrowhead=SimpleHead));
+draw((2,-0.95)+plus--(2,0.95)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.9,arrowhead=SimpleHead));
+draw((2.5,-1.1)+plus--(2.5,0.71)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.2,arrowhead=SimpleHead));
+draw((2.5,-1.1)+plus--(2.5,0.71)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.92,arrowhead=SimpleHead));
+draw((3,-1.18)+plus--(3,0.5)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.5,arrowhead=SimpleHead));
+draw((3.5,-1.09)+plus--(3.5,0.35)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.5,arrowhead=SimpleHead));
+draw((4,-0.9)+plus--(4,0.16)+plus,S*bp*0.8+black,Arrow(size=5*S,position=0.5,arrowhead=SimpleHead));
+label(scale(S*0.8)*"$P$",(4,-0.63)+plus+(0.2,0.2));
+label(scale(S*1.4)*"$+$",(11.2,-0.1));
+filldraw(circle((12.4,-0.1),0.5),lightgray,1*S*bp+black);
+draw((12.15,-0.5)--(12.15,0.3),S*bp*0.8+black,Arrow(size=5*S,position=0.6,arrowhead=SimpleHead));
+draw((12.65,-0.5)--(12.65,0.3),S*bp*0.8+black,Arrow(size=5*S,position=0.6,arrowhead=SimpleHead));
+label(scale(S*0.8)*"$P$",(12.4,-0.1)+(0,0.2));
+\end{asy}

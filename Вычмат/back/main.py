@@ -4,6 +4,7 @@ import lab2.LinearEquation as le
 import lab2.System as Sy
 import lab3.Integrals as Int
 import lab4.Approximation as Ap
+import lab5.Interpolation as lab5
 
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "http://localhost:5173"}})
@@ -155,4 +156,22 @@ def solve_approximation():
         return jsonify(error="enter correct function"), 400
 
 if __name__ == '__main__':
-    app.run()
+    test = lab5.Interpolation([1,2,3,4],[1,3,15,-1])
+    test1 = lab5.Interpolation([1,2,3,5],[1,3,15,-1])
+    result = test.L()
+    print(result)
+    result = test.N_not_same()
+    print(result)
+    result = test.N_same()
+    print(result)
+
+    result = test1.L()
+    print(result)
+    result = test1.N_not_same()
+    print(result)
+    try:
+        result = test1.N_same()
+        print(result)
+    except AssertionError as e:
+        print(e)
+    #app.run()

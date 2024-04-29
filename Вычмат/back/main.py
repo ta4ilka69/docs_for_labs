@@ -5,6 +5,7 @@ import lab2.System as Sy
 import lab3.Integrals as Int
 import lab4.Approximation as Ap
 import lab5.Interpolation as lab5
+import math
 
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "http://localhost:5173"}})
@@ -155,23 +156,59 @@ def solve_approximation():
     except SyntaxError as e:
         return jsonify(error="enter correct function"), 400
 
-if __name__ == '__main__':
-    test = lab5.Interpolation([1,2,3,4],[1,3,15,-1])
-    test1 = lab5.Interpolation([1,2,3,5],[1,3,15,-1])
-    result = test.L()
-    print(result)
-    result = test.N_not_same()
-    print(result)
-    result = test.N_same()
-    print(result)
 
-    result = test1.L()
-    print(result)
-    result = test1.N_not_same()
-    print(result)
+@app.route('/lab5', methods=['POST'])
+def solve_interpolation():
     try:
-        result = test1.N_same()
-        print(result)
+        data = request.get_json()
+        m = data.get("m", False)
+        if(m):
+            x = data.get("x", [])
+            y = data.get("y", [])
+            x_ = data.get("x_", [])
+        else:
+            file = "./back/"+data.get("file", "")
+            x = []
+            y = []
+            x_ = 0
+            try:
+                with open(file, "r") as f:
+                    x = list(map(float, f.readline().split()))
+                    y = list(map(float, f.readline().split())) 
+                    x_ = float(f.readline())
+            except:
+                return jsonify(error="File not found"), 400
+        interpolation = lab5.Interpolation(x, y)
+        lagrange = interpolation.L().replace("--", "+")
+        newton_same = None
+        try:
+            newton_same = interpolation.N_same().replace("--", "+")
+        except AssertionError as e:
+            newton_same = None
+        newton_not_same = interpolation.N_not_same().replace("--", "+")
+        x1_ = eval(lagrange.replace("x", "("+str(x_)+")"))
+        x2_ = eval(newton_not_same.replace("x", "("+str(x_)+")"))
+        if newton_same is not None:
+            x3_ = eval(newton_same.replace("x", "("+str(x_)+")"))
+        else:
+            x3_ = "Cannot use this method for this point"
+        sending = {
+            "x1": x1_,
+            "x2": x2_,
+            "x3": x3_,
+            "func1": lagrange,
+            "func2": newton_not_same,
+            "func3": newton_same,
+            "x": x,
+            "y": y,
+            "dy": interpolation.endless
+        }
+        return jsonify(sending)
     except AssertionError as e:
-        print(e)
-    #app.run()
+        return jsonify(error=str(e)), 400
+    
+   
+    
+
+if __name__ == '__main__':
+    app.run()

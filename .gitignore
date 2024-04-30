@@ -1,3 +1,10 @@
 
 /Вычмат/lab2/programm/front/main/node_modules
 *.pyc
+Вычмат/back/lab1/__pycache__/matrix.cpython-310.pyc
+Вычмат/back/lab2/__pycache__/LinearEquation.cpython-310.pyc
+Вычмат/back/lab2/__pycache__/System.cpython-310.pyc
+Вычмат/back/lab3/__pycache__/Answer.cpython-310.pyc
+Вычмат/back/lab3/__pycache__/Integrals.cpython-310.pyc
+Вычмат/back/lab4/__pycache__/Approximation.cpython-310.pyc
+Вычмат/back/lab5/__pycache__/Interpolation.cpython-310.pyc

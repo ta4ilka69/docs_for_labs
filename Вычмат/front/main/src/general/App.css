@@ -13,6 +13,9 @@
 .marg-left{
     margin-left: 10vw;
 }
+.marg-right{
+    margin-right: 10vw;
+}
 .halfscreen{
     width: 33%;
 }
@@ -21,6 +24,9 @@
 }
 .fullwidth{
     width: 100%;
+}
+.realhalf{
+    width: 50%;
 }
 .inputColumn{
     display: flex;

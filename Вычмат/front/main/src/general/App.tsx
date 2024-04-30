@@ -9,6 +9,7 @@ import LSystem from '../lab2/LSystem';
 import Lab3 from '../lab3/Lab3';
 import Lab4 from '../lab4/Lab4';
 import Lab5 from '../lab5/Lab5';
+import Lab6 from '../lab6/Lab6';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/lab3" element={<Lab3/>} />
         <Route path="/lab4" element={<Lab4/>} />
         <Route path="/lab5" element={<Lab5/>} />
+        <Route path="/lab6" element={<Lab6 />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>

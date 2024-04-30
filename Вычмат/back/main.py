@@ -5,7 +5,7 @@ import lab2.System as Sy
 import lab3.Integrals as Int
 import lab4.Approximation as Ap
 import lab5.Interpolation as lab5
-import math
+from lab6.odu import Odu
 
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "http://localhost:5173"}})
@@ -207,8 +207,46 @@ def solve_interpolation():
     except AssertionError as e:
         return jsonify(error=str(e)), 400
     
-   
-    
 
+@app.route('/lab6', methods=['POST'])
+def solve_diff_equathion():
+    try:
+        data = request.get_json()
+        b = data.get("xn",0)
+        equathion = data.get("eq", "")
+        method = data.get("m", "")
+        eps = data.get("e", "")
+        x0 = data.get("x0", 0)
+        y0 = data.get("y0", 0)
+        odu = Odu(x0,y0,b,int(equathion),eps)
+        if method == 1:
+            res = odu.Eiler()
+            data = {
+                "x": res[0],
+                "y": res[1],
+                "c": odu.constant
+            }
+            return jsonify(data)
+        elif method == 2:
+            res = odu.Runge_Kutta()
+            data = {
+                "x": res[0],
+                "y": res[1],
+                "c": odu.constant
+            }
+            return jsonify(data)
+        elif method == 3:
+            res = odu.Milne()
+            data = {
+                "x": res[0],
+                "y": res[1],
+                "c": odu.constant
+            }
+            return jsonify(data)
+    except AssertionError as e:
+        return jsonify(error=str(e)), 400
+    except OverflowError as e:
+        return jsonify(error="Overflow error, check borders"), 400
+        
 if __name__ == '__main__':
     app.run()

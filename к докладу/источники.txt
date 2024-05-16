@@ -7,6 +7,5 @@ https://techxplore.com/news/2023-10-future-ai-hardware-scientists-unveil.html
 https://yandex.ru/patents/doc/RU2021118571A_20230127
 https://www.frontiersin.org/articles/10.3389/fncom.2023.1114651/full
 https://www.forbes.com/sites/karlfreund/2022/07/30/mythic-how-an-analog-processor-could-revolutionize-edge-ai/?sh=5da8fb6462a8
-https://mythic.ai/products/m1076-analog-matrix-processor/
 https://habr.com/ru/companies/selectel/articles/770120/
 https://mythic.ai/wp-content/uploads/2022/03/MM1076_ME1076-Card-Product-Brief-v1.1.pdf

@@ -17,5 +17,5 @@ class Printing:
             print("{:^3} |".format(k), end="")
             k += 1
             for n in row:
-                print("{:^8.4f} |".format(n), end="")
+                print("{:^8f} |".format(n), end="")
             print()
